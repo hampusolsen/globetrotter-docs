@@ -1,153 +1,403 @@
+Project Description <!-- omit in toc -->
+===================
 
-# Project Description
-
-**Project name:** [Globetrotter](#)<br/>
+**Project name:** Globetrotter<br>
 **Project administrator:** [Hampus Olsen](https://github.com/hampusolsen)
 
-<br/>
+Abstract <!-- omit in toc -->
+--------
 
-<!-- omit in toc -->
-## Table of Content
+<br>
 
-+ [Abstract](#abstract)
+Globetrotter aims to be a fully functional user-driven travel diary. A web application enabling friends and family to share travel experiences. The Application will mainly be divided into two views: one full screen map view for easy travel representation and one blog view for further reading.
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+Table of Content <!-- omit in toc -->
+----------------
 + [Purpose and Goal](#purpose-and-goal)
-+ [Strategy and Scope](#strategy-and-scope)
-  + [OAuth2 and local authentication strategies](#oauth2-and-local-authentication-strategies)
-  + [Testing with Cypress and Jest](#testing-with-cypress-and-jest)
-  + [Bringing interactivity into the mix](#bringing-interactivity-into-the-mix)
-  + [Integrating Google Maps API](#integrating-google-maps-api)
-+ [Limitations](#limitations)
++ [Scope and Strategy](#scope-and-strategy)
+  + [Limitations](#limitations)
+    + [I18n, A11y and L10n](#i18n-a11y-and-l10n)
+    + [Testing](#testing)
+    + [Google Places API](#google-places-api)
+  + [Methodology](#methodology)
++ [Result and Discussion](#result-and-discussion)
+  + [The Design Pattern](#the-design-pattern)
+  + [Version Control with Git](#version-control-with-git)
+  + [Defining the Workspace](#defining-the-workspace)
+    + [Environment Variables and Configuration](#environment-variables-and-configuration)
+    + [Containerization](#containerization)
+  + [Writing Documentation](#writing-documentation)
+  + [Database Management](#database-management)
+    + [Caching Data](#caching-data)
+    + [Distributed and Document-based](#distributed-and-document-based)
+  + [Authentication and Authorization](#authentication-and-authorization)
+    + [Honorable Mentions](#honorable-mentions)
+    + [Stateful and Stateless Web Services](#stateful-and-stateless-web-services)
+  + [UI Design](#ui-design)
+  + [Global State Management](#global-state-management)
 + [Technical Specification](#technical-specification)
-  + [Front-end](#front-end)
-  + [Back-end](#back-end)
-  + [Testing](#testing)
+  + [Frontend](#frontend)
+  + [Backend](#backend)
+  + [Testing and Style Enforcement](#testing-and-style-enforcement)
+  + [Documentation, Diagrams and Graphics](#documentation-diagrams-and-graphics)
++ [API & Database Specifications](#api--database-specifications)
+  + [E/R-diagram](#er-diagram)
+  + [Documentation](#documentation)
 + [Addendum](#addendum)
+  + [Gantt Schedule](#gantt-schedule)
   + [UI Design Standards](#ui-design-standards)
   + [Mockups and Wireframes](#mockups-and-wireframes)
-  + [E/R-diagram](#er-diagram)
-  + [Gantt Schedule](#gantt-schedule)
 
-<br/>
-
-## Abstract
-
-Globetrotter aims to be a fully functional user-driven travel diary web application, enabling friends, family and strangers to connect through travel experiences. The Application will mainly be divided into two views: one full screen map view for easy travel representation and one blog view for further reading.
-
-[_To the top_](#table-of-contents)
-
-<br/>
+<br>
 
 
-## Purpose and Goal
+Purpose and Goal
+----------------
+<br>
 
-With this project I will dive deeper into authenticating and authorizing users, broaden my knowledge regarding database management while continuing to sharpen my full stack development skills.
+During the year that has lapsed I have learned a great deal. Many hours were invested into not only course material, but also looking into and implementing anything hastily mentioned by both of our wonderful lecturers Viktor Silfverström and Andreas Argelius. So I really feel like I have gotten a good grasp on how the various parts of a web application works *in isolation*.
 
-During the year that has lapsed I have learned a great deal and invested many hours into taking in not only course material, but really looked into and implemented anything hastily mentioned by both of our lecturers Viktor Silfverström and Andreas Argelius. So I really feel like I have gotten a good grasp on how the various parts of a web application works _**in isolation**_.
+That is why I, in this project, have chosen to not only immerse myself in a cog or spring that drive a machine, but instead try to deeply understand it as a whole. Everything from a user's first impression to the very last row of a database. I want to make it run and know that I truely am in control of everything. Fully aware of what is lacking, and sure that these are conscious decisions made due to limitations in place.
 
-That is why I have chosen to not only immerse myself into one of the cogs and springs that drive the machine, but into deeply understanding it as a whole. Everything inbetween a user's first impression and the last row of the database index. I want to make it connect and watch the data flow throughout.
+*[To the top](#table-of-contents)*
 
-After project completion I will have experience in or understanding of:
-* Production-ready user authentication and authorization
-* Effective NoSQL database querying and entity relations
-* Code comprehension and maintainability through comments, documentation and naming conventions
-* Global state management for React
-* Caching server responses and user sessions
-* Integrating third-party APIs
-* Custom error handling in ExpressJS
+<br>
 
-[_To the top_](#table-of-contents)
+Scope and Strategy
+------------------
+<br>
 
-<br/>
+### Limitations
+Due to the ambitious nature of the project, as well as taking into consideration the practical tone of our school, I have limited the project scope by focusing on
 
-## Strategy and Scope
+<br>
 
-### OAuth2 and local authentication strategies
+#### I18n, A11y and L10n
+*Accessibility* is widely overlooked to avoid unneccessary complexity, but has been kept in mind in regards to using semantic HTML elements and preparations were made to ease future implementation. Further, *internationalization* has been limited by only using English as the project language and *localization* set to American English; all documentation, code comments and theory is written as such, though dates are localized.
 
-### Testing with Cypress and Jest
+<br>
 
-### Bringing interactivity into the mix
+#### Testing
+A subject in itself, tests do not to cover any desirable amount of the code base, and those written are simpler integration and unit tests for the frontend client. Initial wishful thinking consisted of a much more test-driven development, but was later discarded due to lack of practical experience. Specifically with regards to end-to-end tests.
 
-### Integrating Google Maps API
+<br>
 
-[_To the top_](#table-of-contents)
+#### Google Places API
+Often used in combination with Google Maps API, [Places](https://developers.google.com/places/web-service/overview) were added to a low priority backlog and as such, did not get to see the light of day. The additional work it would take to integrate with my own search engine 
 
-<br/>
+<br>
 
-## Limitations
+*[To the top](#table-of-contents)*
 
-Due to the ambitious nature of the project, as well as taking into consideration the practical tone of our school, I have limited the project scope by not focusing too much on justifying design and technical implementations. Instead I have chosen to provide brief rationalization in regards to choices made, and let quality of the final product convey level of competence.
+<br>
 
-_**Accessibility**_ _(a11y)_ will also be widely overlooked to avoid unneccessary complexity, but will be kept in mind in regards to using semantic HTML elements and preparations will be made to ease future implementation.
+<br>
 
-Further, I will be limiting _**internationalization**_ _(i18n)_ to using **English** as the project *locale*; all documentation, code comments and theory will be written as such. _Dates_ and _timestamps_ will be in Coordinated Universal Time _(UTC)_.
+### Methodology
++ Step-by-step format
++ Research -> planning -> setup -> implementation -> reflection -> adaptation
++ Combining discussion and result
 
-[_To the top_](#table-of-contents)
+<br>
 
-<br/>
+*[To the top](#table-of-contents)*
 
-## Technical Specification
+<br>
 
-To make the lookup of technical specifications easier it has been broken up into categories: _front-end_, _back-end_ and _testing_.
+<br>
 
-<br/>
+Result and Discussion
+---------------------
+<br>
 
-### Front-end
+### The Design Pattern
+Content
 
-* [React](https://reactjs.org/): _A JavaScript library for building user interfaces_
-* [React Query](https://react-query.tanstack.com/): _Performant and powerful data synchronization for React_
-* [Axios](https://github.com/axios/axios): _Promise based HTTP client for the browser and node.js_
-* [Framer Motion](https://www.framer.com/motion/): _A production-ready motion library for React_
-* [styled-components](https://styled-components.com/): _Visual primitives for the component age_
+[comment]: # (codeacademy description, https://www.codecademy.com/articles/mvc)
+MVC
 
-### Back-end
+<br>
 
-* [Express](https://expressjs.com/): _Fast, unopinionated, minimalist web framework for Node.js_
-* [express-validator](https://express-validator.github.io/): _A set of express.js middlewares that wraps validator.js validator and sanitizer functions_
-* [express-session](https://github.com/expressjs/session): _Simple session middleware for Express_
-* [Passport](http://www.passportjs.org/): _Simple, unobtrusive authentication for Node.js_
-* [mongoose](https://mongoosejs.com/): _Elegant MongoDB object modeling for Node.js_
+*[To the top](#table-of-contents)*
 
-### Testing
+<br>
 
-* [eslint](https://github.com/wesbos/eslint-config-wesbos): _Code validation and formatting by Wes Bos' variation of Airbnb's ES6 standards_
-* [Jest](https://jestjs.io/): _A delightful JavaScript Testing Framework with a focus on simplicity_
-* [Cypress](https://www.cypress.io/): _Fast, easy and reliable testing for anything that runs in a browser_
+<br>
+
+### Version Control with Git
++ awkward when solo programming / great history tracker / reminder
++ commits after session or task completed
+
+[comment]: # (https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
+workflow
+
+[comment]: # (https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1)
+non-linear vs linear history
+
+[comment]: # (https://www.conventionalcommits.org/en/v1.0.0/#summary)
+commit naming convention
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+### Defining the Workspace
+Content
+
+<br>
+
+#### Environment Variables and Configuration
+Content
+
+<br>
+
+#### Containerization
+Content
+
+[comment]: # (commit naming, https://www.conventionalcommits.org/en/v1.0.0/#summary)
+containers vs virtual environments
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+### Writing Documentation
+To make the task of writing documentation not so overwhelming, a good idea is to spread it throughout a projects duration. Documentation, much like the entirety of this exam report, was written gradually during subject research, implementation and in retrospect. This has helped keeping sections both relevant and cohesive.
+
+After having read so much documentation on Github and elsewhere I knew I could not possibly write my own in any other syntax than *[Markdown](https://en.wikipedia.org/wiki/Markdown)*, even though *[reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText)* is a solid contender and widely used; picking anything else would feel like committing a crime. 
+
+To accomodate the widest array of platforms and pursuit the highest percentage of compatibility I found the [commonmark specification](https://spec.commonmark.org/0.29/) to align closest with my writing style while achieving these goals. So I have followed their syntax guidelines while writing this report, only deviating when it comes commenting, where I found this [interesting stackoverflow post](https://stackoverflow.com/questions/4823468/comments-in-markdown/32190021#32190021), proving `[comment]: # (<comment here>)` with an empty line above, to provide best platform coverage.
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+### Database Management
+Content
+
+<br>
+
+#### Caching Data
+Content
+
+<br>
+
+#### Distributed and Document-based
+Content
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+### Authentication and Authorization
+A collectively deemed complex and persistant subject of debate is the topic of how to handle authentication of users. Without a method of identification there would be no way to personalize the user experience, and without verification of identity, neither would there be a way to secure it.
+
+Before even beginning to write about authentication and authorization, we must first clearly define both terms. More often than not they are swapped around or used semantically indistinguishable from oneanother although there is a clear cut difference:
+
++ **Authentication** equals *verifying identity*, such as when a user provides a combination of an e-mail address and a password.
+
++ **Authorizing** means *granting access* to a restricted resource or method, like granting access to a sectioned off part of a website or allowing someone to read and write to a database.
+
+<br>
+
+> “Encryption works ... Unfortunately, endpoint security is so terrifically weak ...”
+
+*[Edward Snowden](https://twitter.com/snowden)*
+
+<br>
+
+Handling user data in a safe and responsible manner has been proven to be very difficult and is a task with many ways to fail. Having spent days upon days searching for a surefire way as to how authentication should be implemented, I was forced to forfeit in favor of preserving time. There is no holy grail of authentication and the methods available are continuously changing.
+
+Though myself and Mr. Snowden just might have implied that no one seems to know how authentication works because it is impossible to get right, this is far from the truth. There exists a few well established strategies which can be interwoven, extended and used in parallela and I will write more in-depth about the particular ones I have adhered to. 
+
+<br>
+
+#### Honorable Mentions
+For this project I will not be using the following methods, but felt as they were worth mentioning:
+
++ [Role-Based Access Control (RBAC)](https://auth0.com/docs/authorization/rbac): The choice was made to treat all authenticated users the same in terms of their privileges. *Guest role* indirectly exists, since unregistered users must have a way to sign up or log in.
+
++ [Attribute-Based Access Control (ABAC)](https://www.zehntec.com/blog/permission-based-authorization-in-asp-net-core/): Expanding on role-based authorization by breaking down permission rights into smaller pieces, ABAC is common in many large-scale applications and content management systems (CMS). Roles can be created and tailored, granting different access rights to different users. Because users in my case need the same set of mostly self-modifying permissions, this way of granting user privileges was quickly rejected.
+
++ [Multi-Factor Authentication (MFA)](https://brocku.ca/information-technology/service-catalogue/security-and-access/multi-factor-authentication/): A great way to add another layer of security and can be implemented with relative ease on top of any existing method. MFA has become a must for any application that needs as high a level of security it can get. A great example is the combination of BankID and a swedish personal number.
+  
++ [JSON Web Token-Based Authentication (JWT)](https://auth0.com/learn/token-based-authentication-made-easy/): This was initially planned and scheduled for as it is easier to implement, but comes with a few potential drawbacks with respect to *security*, *data farming* and *user experience* as it is completely stateless, meaning that JWTs does not store any data and are solely used for authorization. Data farming is an interesting aspect and something I would like to research more down the line. As such I have made preparations for, though not implemented it, in this project.
+
+<br>
+
+#### Stateful and Stateless Web Services
+Also known as stateful authentication or just sessions for short, the method, as briefly mentioned above, presents more options to closely observe how clients actually use an application as well as many possibilities of tailoring the experience to each individual user. Let me illustrate with a quick example of something that would ***not*** be possible using JWT, or stateless authentication:
+
+*You are on a e-commerce site and have put several items in your shopping cart. Items which you have spent a considerable amount of time carefully picking out among hundreds of other items. Suddenly your computer runs out of battery and shuts down, terminating all running processes, including your browser. Or perhaps your internet connection is lost. With sessions implemented you can rest assured that the shopping cart data was stored in the session storage on the server, while if the application only had been using stateless JWT tokens you would have had to find and add the items again.*
+
+Not at a fault of the site owner, but this might just make them lose that one customer.
+
+What enables a stateful web service to provide a solution to such a scenario is a storage module dedicated for session-related data that does not need to outlive the session. Basically, when the session lifetime ends, a user logs out or it is invalidated by the server, any stored data pertaining to it will be forgotten. This data, or part of it, can of course be stored permanently in another database before being discarded if so chosen.
+
+[There are many pros and cons](https://github.com/OpenIdentityPlatform/OpenAM/wiki/Stateful-vs-Stateless-Authentication) to weigh against eachother when deciding on a correct strategy for ones own application.
+
+In terms of security, stateful web services comes out on top when compared to a stateless application. The main reason being: security is inhereted by the very nature of statefulness. For authorization strategies using stateful JSON Web Tokens, all session data is stored inside the token itself. Meaning that anyone who is in possession of said token would be able to decode it and read potentially sensitive information. In contrast, merely an identifier of the session is being sent back and forth between client and the authentication server for a stateful web service. Not only is session-related data openly embedded in the token used for a stateless strategy, authorization is also impossible to revoke should a token be compromized. In such a case, an attack is possible until the end of the token lifetime. Hence, why they are usually short lived. Meanwhile, in a stateful application, access can simply be withdrawn by removing corresponding session value from the cache database. One could even go as far as to construct elaborate mechanisms to try and track an abuser. As I felt comfortable implementing it, the stateful variant won in terms of security due to its many natural advantages.
+
+Concentrating further on the difference between what is being sent in cookies, stateless JWT versus simple session identifier, there is a lot to be said about how this has a direct impact on resource demand. As more data is needed for a session, stateless JWT gets heavier. A heavier JWT means a heavier network load. This is not an issue as long as the session state is kept simple, but becomes a problem as features are added and it grows in complexity, as many inbound requests could result in a network bottleneck. On the other hand, stateful session requires as mentioned a place to store session data server-side. Databases management and communication of course adds not only to code complexity, but could just as well become an issue in regards to memory. A lot of testing and cost analysis is required to decide which process is more advantageous and if there are any breakpoints. In my case it was purely decided on what would grant the most personal development, as I had not previously built a stateful application.
+
+Though ???
+
+cons
+scalability (approaching global scale only)
+resource consumption
+implementation
+
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+### UI Design
++ Google guidelines from Material Design
++ Common color scheme
++ Responsive quirks
+  + https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+### Global State Management
+Content
+
+* "overrated" / "hyped", often unneccessary with a truely global state
+* per view / several view contexts
+* complexity.. jotai/recoil -> context -> redux/rxjs/mobx
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+Technical Specification
+-----------------------
+<br>
+
+To make the lookup of technical specifications easier it has been broken up into categories: *frontend*, *backend* and *testing*.
+
+<br>
+
+### Frontend
+
++ [React](https://reactjs.org/): *A JavaScript library for building user interfaces*
++ [Axios](https://github.com/axios/axios): *Promise based HTTP client for the browser and node.js*
++ [styled-components](https://styled-components.com/): *Visual primitives for the component age*
++ [Formik](https://formik.org/): *The World's most popular open source form library for React and React Native*
++ [Yup](https://github.com/jquense/yup): *Dead simple Object schema validation*
+
+### Backend
+
++ [Express](https://expressjs.com/): *Fast, unopinionated, minimalist web framework for Node.js*
++ [express-validator](https://express-validator.github.io/): *A set of express.js middlewares that wraps validator.js validator and sanitizer functions*
++ [express-session](https://github.com/expressjs/session): *Simple session middleware for Express*
++ [Passport](http://www.passportjs.org/): *Simple, unobtrusive authentication for Node.js*
++ [mongoose](https://mongoosejs.com/): *Elegant MongoDB object modeling for Node.js*
++ [ioredis](https://github.com/luin/ioredis): *A robust, performance-focused and full-featured Redis client for Node.js*
+
+### Testing and Style Enforcement
+
++ [eslint](https://github.com/wesbos/eslint-config-wesbos): *Code validation and formatting according to Airbnb's ES6 standards*
++ [prettier](https://prettier.io/): *An opinionated code formatter*
+
+### Documentation, Diagrams and Graphics
+
++ [draw.io](http://draw.io): *Easily create and share professional diagrams*
++ [Figma](http://figma.com): *Helps teams create, test, and ship better designs from start to finish*
++ [Illustrator](https://adobe.com/products/photoshop.html): *The state of the art of illustration*
++ [iconmonstr](http://iconmonstr.com): *A wide variety of free SVG icons.*
   
 
-[_To the top_](#table-of-contents)
+*[To the top](#table-of-contents)*
 
-<br/>
+<br>
 
-## Addendum
-
-### UI Design Standards
-
-Content
-
-[_To the top_](#table-of-contents)
-
-<br/>
-
-### Mockups and Wireframes
-
-Content
-
-[_To the top_](#table-of-contents)
-
-<br/>
+API & Database Specifications
+-----------------------------
+<br>
 
 ### E/R-diagram
 
 [![er diagram](https://i.ibb.co/82Gz0cG/er-diagram.png)](https://ibb.co/0Z1Bct1)
 
-_Using Crow's foot notation._ 
+*Using Crow's foot notation.*
 
-[_To the top_](#table-of-contents)
+<br>
 
-<br/>
+### Documentation
+
+Click [here](https://github.com/hampusolsen/globetrotter-server/blob/master/docs/api-specification.md) to go to the Globetrotter backend API documentation.
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+Addendum
+--------
+<br>
 
 ### Gantt Schedule
 
 [![gantt schedule](https://i.ibb.co/f4DBC65/gantt-schedule.jpg)](https://ibb.co/QrDz6SR)
 
-[_To the top_](#table-of-contents)
+*[To the top](#table-of-contents)*
+
+<br>
+
+### UI Design Standards
+Content
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+### Mockups and Wireframes
+
+Content
+
+<br>
+
+*[To the top](#table-of-contents)*
