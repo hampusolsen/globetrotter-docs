@@ -13,7 +13,7 @@ Globetrotter Project Description
 <br>
 
 <p align="center">
-  <img src="./design/svgs/Logo.svg" width="30%">
+  <img src="./design/svgs/Logo.svg" width="40%">
 </p>
 
 <br>
@@ -143,11 +143,11 @@ The [*Model-View-Controller* pattern](https://www.codecademy.com/articles/mvc) i
 <br>
 
 ### Responsive User Interface
-As previously mentioned in the project scope, the application was made with the intention of being responsive with three breakpoints. A very common approach that satisfies all types of devices. While mobile devices' screens are evolving with every generation, growing larger and larger, and pixel density also improves, so does the optimal breakpoints also shift. Of course, every consumer does not upgrade their phone on each generational swap, but to make sure the latest and greatest is supported it might be a good idea to update ones breakpoints. An effortless task if these are saved as constants, either with environment variables or in a simple `.js`-file. Globetrotter applies this by setting the breakpoints at pixel values of 414, 800 and 1080 using a `min-width` media query, representing [current market availability of phone, tablet and laptop screens' resolution](https://gs.statcounter.com/screen-resolution-stats/), adhereing to mobile-first design philosophy.
+As previously mentioned in the project scope, the application was made with the intention of being responsive at three breakpoints. A very common approach that satisfies all types of devices. While mobile devices' screens are evolving with every generation, growing larger and larger, and pixel density also improves, so does the optimal breakpoints also shift. Of course, every consumer does not upgrade their phone on each generational swap, but to make sure the latest and greatest is supported it might be a good idea to update ones breakpoints. An effortless task if these are saved as constants, either with environment variables or in a simple `.js`-file. Globetrotter applies this by setting the breakpoints at pixel values of 414, 800 and 1080 using a `min-width` media query, representing [current market availability of phone, tablet and laptop screen resolutions](https://gs.statcounter.com/screen-resolution-stats/), adhereing to mobile-first design philosophy.
 
 <br>
 
-Mobile-first is a relatively new yet universally adopted concept, born out of the fact that [more than half of daily internet users are using a mobile device](https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf) to browse the web. Developing in a mobile-first way means prioritizing development and optimization for smaller screens, and adapting to larger ones later. Taking pointers from [Facebook's statistics](https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/), which show that 98.3% of their visitors used mobile devices to access the site, coupled with the fact that Globetrotter is a type of social media platform, a mobile-first approach almost seems non-negotiable. An astonishing 79.9% exclusively used their smartphone on the web application.
+Mobile-first is a relatively new yet universally adopted concept, born out of the fact that [more than half of daily internet users are using a mobile device](https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf) to browse the web. Developing in a mobile-first way means prioritizing development and optimization for smaller screens, and adapting to larger ones later. Taking pointers from [Facebook's statistics](https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/), which shows that 98.3% of their visitors used mobile devices to access the site, coupled with the fact that Globetrotter is a type of social media platform, a mobile-first approach almost seems non-negotiable. An astonishing 79.9% exclusively used their smartphone on the web application.
 
 <br>
 
@@ -435,7 +435,7 @@ Addendum
 <p align="center">
   <img src="./design/mockups/Desktop.png" width="70%">
   <br>
-  <em style="font-size:12px">Desktop breakpoint landing page</em>
+  <em style="font-size:12px">Desktop landing page</em>
 </p>
 
 <br>
