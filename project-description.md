@@ -1,9 +1,23 @@
 <!-- omit in toc -->
-Project Description
-===================
+Globetrotter Project Description
+================================
 
 **Project name:** Globetrotter<br>
 **Project administrator:** [Hampus Olsen](https://github.com/hampusolsen)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<p align="center">
+  <img src="./design/svgs/Logo.svg" style="width:40%">
+</p>
+
+<br>
+<br>
 
 <!-- omit in toc -->
 Abstract
@@ -13,13 +27,12 @@ Abstract
 
 Globetrotter aims to be a fully functional user-driven travel diary. A web application enabling friends and family to share travel experiences. The Application will mainly be divided into two views: one full screen map view for easy travel representation and one blog view for further reading.
 
-*[To the top](#table-of-contents)*
-
+<br>
 <br>
 
 <!-- omit in toc -->
-Table of Content
-----------------
+Table of Contents
+-----------------
 + [Purpose and Goal](#purpose-and-goal)
 + [Scope](#scope)
   + [Limitations](#limitations)
@@ -66,7 +79,7 @@ During the year that has lapsed I have learned a great deal. Many hours were inv
 
 That is why I, in this project, have chosen to not only immerse myself in a cog or spring that drive a machine, but instead try to deeply understand it as a whole. Everything from a user's first impression to the very last row of a database. I want to make it run and know that I truely am in control of everything. Fully aware of what is lacking, and sure that these are conscious decisions made due to limitations in place.
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 
