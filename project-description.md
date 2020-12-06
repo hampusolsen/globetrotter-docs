@@ -13,7 +13,7 @@ Globetrotter Project Description
 <br>
 
 <p align="center">
-  <img src="./design/svgs/Logo.svg" style="width:380px">
+  <img src="./design/svgs/Logo.svg" width="30%">
 </p>
 
 <br>
@@ -416,7 +416,7 @@ Addendum
 
 <p align="center">
   <a href="https://ibb.co/QrDz6SR">
-    <img src="https://i.ibb.co/f4DBC65/gantt-schedule.jpg" style="width:60%">
+    <img src="https://i.ibb.co/f4DBC65/gantt-schedule.jpg">
   </a>
 </p>
 
@@ -429,7 +429,7 @@ Addendum
 <br>
 
 <p align="center">
-  <img src="./design/mockups/Phone.png" style="width:30%">
+  <img src="./design/mockups/Phone.png" width="30%">
   <br>
   <em style="font-size:12px">Mobile landing page</em>
 </p>
@@ -438,7 +438,7 @@ Addendum
 <br>
 
 <p align="center">
-  <img src="./design/mockups/Desktop.png" style="width:70%">
+  <img src="./design/mockups/Desktop.png" width="70%">
   <br>
   <em style="font-size:12px">Desktop breakpoint landing page</em>
 </p>
@@ -447,7 +447,7 @@ Addendum
 <br>
 
 <p align="center">
-  <img src="./design/mockups/styleguide.svg" style="width:70%">
+  <img src="./design/mockups/styleguide.svg" width="70%">
   <br>
   <em style="font-size:12px">Design styleguide</em>
 </p>
