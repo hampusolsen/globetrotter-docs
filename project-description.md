@@ -13,7 +13,7 @@ Globetrotter Project Description
 <br>
 
 <p align="center">
-  <img src="./design/svgs/Logo.svg" style="width:40%">
+  <img src="./design/svgs/Logo.svg" style="width:380px">
 </p>
 
 <br>
@@ -25,7 +25,7 @@ Abstract
 
 <br>
 
-Globetrotter aims to be a fully functional user-driven travel diary. A web application enabling friends and family to share travel experiences. The Application will mainly be divided into two views: one full screen map view for easy travel representation and one blog view for further reading.
+Globetrotter aims to be a fully functional user-driven travel diary. A web application enabling friends and family to share travel experiences. The application will mainly be divided into two views: one full screen map view for easy travel representation and one blog view for further reading.
 
 <br>
 <br>
@@ -33,6 +33,7 @@ Globetrotter aims to be a fully functional user-driven travel diary. A web appli
 <!-- omit in toc -->
 Table of Contents
 -----------------
+
 + [Purpose and Goal](#purpose-and-goal)
 + [Scope](#scope)
   + [Limitations](#limitations)
@@ -69,7 +70,7 @@ Table of Contents
   + [Mockups and Styleguide](#mockups-and-styleguide)
 
 <br>
-
+<br>
 
 Purpose and Goal
 ----------------
@@ -77,10 +78,13 @@ Purpose and Goal
 
 During the year that has lapsed I have learned a great deal. Many hours were invested into not only course material, but also looking into and implementing anything hastily mentioned by both of our wonderful lecturers Viktor Silfverström and Andreas Argelius. So I really feel like I have gotten a good grasp on how the various parts of a web application works *in isolation*.
 
-That is why I, in this project, have chosen to not only immerse myself in a cog or spring that drive a machine, but instead try to deeply understand it as a whole. Everything from a user's first impression to the very last row of a database. I want to make it run and know that I truely am in control of everything. Fully aware of what is lacking, and sure that these are conscious decisions made due to limitations in place.
+That is why I, in this project, have chosen to not only immerse myself in a cog or spring that drive a machine, but instead attempt to deeply understand it as a whole. Everything from a user's first impression to the very last row of a database. I want to make it run and know that I truely am in control of everything. Fully aware of what is lacking, and sure that these are conscious decisions made due to the limitations in place.
 
-[*To the top*](#table-of-contents)
+<br>
 
+*[To the top](#table-of-contents)*
+
+<br>
 <br>
 
 Scope
@@ -110,7 +114,6 @@ A subject in itself, tests do not to cover any desirable amount of the code base
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 ### Methodology
@@ -123,7 +126,6 @@ While contemplating my work process I started with tasks that I knew would be of
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 Strategy and Implementation
@@ -141,7 +143,6 @@ MVC
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 ### UI Design
@@ -155,7 +156,6 @@ MVC
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 ### Version Control with Git
@@ -176,7 +176,6 @@ commit naming convention
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 ### Setting up the Workspace
@@ -200,7 +199,6 @@ containers vs virtual environments
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 ### Technical Documentation
@@ -215,7 +213,6 @@ To accomodate the widest array of platforms and pursuit the highest percentage o
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 ### Database Management
@@ -236,7 +233,6 @@ Content
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 ### Authentication and Authorization
@@ -303,7 +299,6 @@ implementation
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 ### Global State Management
@@ -318,21 +313,23 @@ Content
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
 
 Discussion
 ----------
 <br>
 
+Blehe
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
 <br>
 
 Technical Specification
 -----------------------
-<br>
-
-To make the lookup of technical specifications easier it has been broken up into categories: *frontend*, *backend* and *testing*.
-
 <br>
 
 ### Frontend
@@ -368,10 +365,10 @@ To make the lookup of technical specifications easier it has been broken up into
 *[To the top](#table-of-contents)*
 
 <br>
+<br>
 
 API & Database Specifications
 -----------------------------
-<br>
 <br>
 
 ### E/R-diagram
