@@ -1,10 +1,12 @@
-Project Description <!-- omit in toc -->
+<!-- omit in toc -->
+Project Description
 ===================
 
 **Project name:** Globetrotter<br>
 **Project administrator:** [Hampus Olsen](https://github.com/hampusolsen)
 
-Abstract <!-- omit in toc -->
+<!-- omit in toc -->
+Abstract
 --------
 
 <br>
@@ -15,30 +17,32 @@ Globetrotter aims to be a fully functional user-driven travel diary. A web appli
 
 <br>
 
-Table of Content <!-- omit in toc -->
+<!-- omit in toc -->
+Table of Content
 ----------------
 + [Purpose and Goal](#purpose-and-goal)
-+ [Scope and Strategy](#scope-and-strategy)
++ [Scope](#scope)
   + [Limitations](#limitations)
+    + [Responsive Design](#responsive-design)
     + [I18n, A11y and L10n](#i18n-a11y-and-l10n)
     + [Testing](#testing)
-    + [Google Places API](#google-places-api)
   + [Methodology](#methodology)
-+ [Result and Discussion](#result-and-discussion)
++ [Strategy and Implementation](#strategy-and-implementation)
   + [The Design Pattern](#the-design-pattern)
+  + [UI Design](#ui-design)
   + [Version Control with Git](#version-control-with-git)
-  + [Defining the Workspace](#defining-the-workspace)
+  + [Setting up the Workspace](#setting-up-the-workspace)
     + [Environment Variables and Configuration](#environment-variables-and-configuration)
     + [Containerization](#containerization)
-  + [Writing Documentation](#writing-documentation)
+  + [Technical Documentation](#technical-documentation)
   + [Database Management](#database-management)
     + [Caching Data](#caching-data)
     + [Distributed and Document-based](#distributed-and-document-based)
   + [Authentication and Authorization](#authentication-and-authorization)
     + [Honorable Mentions](#honorable-mentions)
     + [Stateful and Stateless Web Services](#stateful-and-stateless-web-services)
-  + [UI Design](#ui-design)
   + [Global State Management](#global-state-management)
++ [Discussion](#discussion)
 + [Technical Specification](#technical-specification)
   + [Frontend](#frontend)
   + [Backend](#backend)
@@ -49,8 +53,7 @@ Table of Content <!-- omit in toc -->
   + [Documentation](#documentation)
 + [Addendum](#addendum)
   + [Gantt Schedule](#gantt-schedule)
-  + [UI Design Standards](#ui-design-standards)
-  + [Mockups and Wireframes](#mockups-and-wireframes)
+  + [Mockups and Styleguide](#mockups-and-styleguide)
 
 <br>
 
@@ -67,12 +70,17 @@ That is why I, in this project, have chosen to not only immerse myself in a cog 
 
 <br>
 
-Scope and Strategy
-------------------
+Scope
+-----
 <br>
 
 ### Limitations
-Due to the ambitious nature of the project, as well as taking into consideration the practical tone of our school, I have limited the project scope by focusing on
+Due to the ambitious nature of the project as well as taking into consideration the practical tone of our school, the project scope is limited by focusing mainly on writing the web application. Obviously the report will mirror this decision. Alas, its functionality will be to describe the project, in detail, more so than act as a typical scientific report.
+
+<br>
+
+#### Responsive Design
+The goal was always to make Globetrotter's UI responsive and largely customized for the most common breakpoints in a *small/medium/large* fashion, albeit taking a mobile-first approach and placing the rest in the backlog on a low priority.
 
 <br>
 
@@ -86,11 +94,6 @@ A subject in itself, tests do not to cover any desirable amount of the code base
 
 <br>
 
-#### Google Places API
-Often used in combination with Google Maps API, [Places](https://developers.google.com/places/web-service/overview) were added to a low priority backlog and as such, did not get to see the light of day. The additional work it would take to integrate with my own search engine 
-
-<br>
-
 *[To the top](#table-of-contents)*
 
 <br>
@@ -98,9 +101,9 @@ Often used in combination with Google Maps API, [Places](https://developers.goog
 <br>
 
 ### Methodology
-+ Step-by-step format
-+ Research -> planning -> setup -> implementation -> reflection -> adaptation
-+ Combining discussion and result
+Doing a fullstack project like this, planning it all out sometimes felt overwhelming or stressful and it was close to impossible knowing if everything got covered. Realistically, the planning phase of a project can often be more long-lived than implemention and testing combined. Not something that I could afford, all things considered.
+
+While contemplating my work process I started with tasks that I knew would be of aid during development and demanding no prerequisite work. Such as defining a design styleguide, creating mockups and wireframes as well as E/R and auth flow-schematics. With these things in place it was much easier to produce code. Notes were continuously kept as the codebase grew in size and complexity, and could later be used as fallbacks when writing the project description.
 
 <br>
 
@@ -110,8 +113,8 @@ Often used in combination with Google Maps API, [Places](https://developers.goog
 
 <br>
 
-Result and Discussion
----------------------
+Strategy and Implementation
+---------------------------
 <br>
 
 ### The Design Pattern
@@ -119,6 +122,20 @@ Content
 
 [comment]: # (codeacademy description, https://www.codecademy.com/articles/mvc)
 MVC
+
+<br>
+
+*[To the top](#table-of-contents)*
+
+<br>
+
+<br>
+
+### UI Design
++ Color scheme
++ Spacing
++ Responsive quirks
+  + https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/
 
 <br>
 
@@ -149,20 +166,20 @@ commit naming convention
 
 <br>
 
-### Defining the Workspace
+### Setting up the Workspace
 Content
 
 <br>
 
 #### Environment Variables and Configuration
-Content
++ natural selection of environment variables
 
 <br>
 
 #### Containerization
 Content
 
-[comment]: # (commit naming, https://www.conventionalcommits.org/en/v1.0.0/#summary)
+[comment]: # (https://www.ibm.com/cloud/blog/containers-vs-vms)
 containers vs virtual environments
 
 <br>
@@ -173,8 +190,8 @@ containers vs virtual environments
 
 <br>
 
-### Writing Documentation
-To make the task of writing documentation not so overwhelming, a good idea is to spread it throughout a projects duration. Documentation, much like the entirety of this exam report, was written gradually during subject research, implementation and in retrospect. This has helped keeping sections both relevant and cohesive.
+### Technical Documentation
+To make the task of writing documentation not so overwhelming, I believed it to be a good idea to spread it throughout the projects duration. Documenting functions and data structures close before or after their creation helps with keeping the documentation correct as well as easy and fast to write. Usually technical documentation tends to be automatically generated by tools such as [Swagger](https://swagger.io/), but as I possessed no prior knowledge of their utilization and already felt as if there were enough things to consider, adding another tool and also learning how to use it  was out of the question.
 
 After having read so much documentation on Github and elsewhere I knew I could not possibly write my own in any other syntax than *[Markdown](https://en.wikipedia.org/wiki/Markdown)*, even though *[reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText)* is a solid contender and widely used; picking anything else would feel like committing a crime. 
 
@@ -276,20 +293,6 @@ implementation
 
 <br>
 
-### UI Design
-+ Google guidelines from Material Design
-+ Common color scheme
-+ Responsive quirks
-  + https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/
-
-<br>
-
-*[To the top](#table-of-contents)*
-
-<br>
-
-<br>
-
 ### Global State Management
 Content
 
@@ -301,6 +304,12 @@ Content
 
 *[To the top](#table-of-contents)*
 
+<br>
+
+<br>
+
+Discussion
+----------
 <br>
 
 <br>
@@ -338,10 +347,10 @@ To make the lookup of technical specifications easier it has been broken up into
 ### Documentation, Diagrams and Graphics
 
 + [draw.io](http://draw.io): *Easily create and share professional diagrams*
-+ [Figma](http://figma.com): *Helps teams create, test, and ship better designs from start to finish*
 + [Illustrator](https://adobe.com/products/photoshop.html): *The state of the art of illustration*
 + [iconmonstr](http://iconmonstr.com): *A wide variety of free SVG icons.*
-  
+
+<br>
 
 *[To the top](#table-of-contents)*
 
@@ -350,16 +359,32 @@ To make the lookup of technical specifications easier it has been broken up into
 API & Database Specifications
 -----------------------------
 <br>
+<br>
 
 ### E/R-diagram
+<br>
+<br>
 
-[![er diagram](https://i.ibb.co/82Gz0cG/er-diagram.png)](https://ibb.co/0Z1Bct1)
-
-*Using Crow's foot notation.*
+<p align="center">
+  <a href="https://ibb.co/0Z1Bct1">
+    <img src="https://i.ibb.co/82Gz0cG/er-diagram.png">
+  </a>
+  <br>
+  <br>
+  <em>Using Crow's foot notation.</em>
+</p>
 
 <br>
 
+*[To the top](#table-of-contents)*
+
+<br>
+<br>
+
+<hr>
+
 ### Documentation
+<br>
 
 Click [here](https://github.com/hampusolsen/globetrotter-server/blob/master/docs/api-specification.md) to go to the Globetrotter backend API documentation.
 
@@ -368,36 +393,56 @@ Click [here](https://github.com/hampusolsen/globetrotter-server/blob/master/docs
 *[To the top](#table-of-contents)*
 
 <br>
-
 <br>
+
+<hr>
 
 Addendum
 --------
 <br>
 
 ### Gantt Schedule
+<br>
 
-[![gantt schedule](https://i.ibb.co/f4DBC65/gantt-schedule.jpg)](https://ibb.co/QrDz6SR)
+<p align="center">
+  <a href="https://ibb.co/QrDz6SR">
+    <img src="https://i.ibb.co/f4DBC65/gantt-schedule.jpg" style="width:60%">
+  </a>
+</p>
 
 *[To the top](#table-of-contents)*
 
 <br>
-
-### UI Design Standards
-Content
-
 <br>
 
-*[To the top](#table-of-contents)*
-
+### Mockups and Styleguide
 <br>
 
+<p align="center">
+  <img src="./design/mockups/Phone.png" style="width:30%">
+  <br>
+  <em style="font-size:12px">Mobile landing page</em>
+</p>
+
+<br>
 <br>
 
-### Mockups and Wireframes
+<p align="center">
+  <img src="./design/mockups/Desktop.png" style="width:70%">
+  <br>
+  <em style="font-size:12px">Desktop breakpoint landing page</em>
+</p>
 
-Content
+<br>
+<br>
 
+<p align="center">
+  <img src="./design/mockups/styleguide.svg" style="width:70%">
+  <br>
+  <em style="font-size:12px">Design styleguide</em>
+</p>
+
+<br>
 <br>
 
 *[To the top](#table-of-contents)*
