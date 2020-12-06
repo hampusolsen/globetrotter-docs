@@ -133,10 +133,7 @@ Strategy and Implementation
 <br>
 
 ### The Design Pattern
-Content
-
-[comment]: # (codeacademy description, https://www.codecademy.com/articles/mvc)
-MVC
+The [*Model-View-Controller* pattern](https://www.codecademy.com/articles/mvc) is currently dominating fullstack web applications' architecture and it is becoming increasingly hard to find frameworks not building upon this concept. With its fairly simplistic approach that invites to a logical organization of a projects file structure, it is no wonder that the pattern is widely used. Understanding how the different parts works together is, as hinted at, relatively easy, and so in turn also eases development as functionality is clearly defined. For this project the backend provides both model and controller functionality by Mongoose models and route handlers respectively whilet the frontend, powered by React, works as the view layer.
 
 <br>
 
@@ -148,6 +145,14 @@ MVC
 ### UI Design
 + Color scheme
 + Spacing
++ Mobile-first
+  
+[comment]: # (https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/)
+facebook stats, 98.3% mobile device, 79.9% only mobile
+
+[comment]: # (https://www.statista.com/topics/779/mobile-internet/#dossierSummary__chapter4)
+global data transfer stats almost 50% mobile usage
+
 + Responsive quirks
   + https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/
 
@@ -159,6 +164,7 @@ MVC
 <br>
 
 ### Version Control with Git
++ github
 + awkward when solo programming / great history tracker / reminder
 + commits after session or task completed
 
@@ -272,7 +278,7 @@ For this project I will not be using the following methods, but felt as they wer
 <br>
 
 #### Stateful and Stateless Web Services
-Also known as stateful authentication or just sessions for short, the method, as briefly mentioned above, presents more options to closely observe how clients actually use an application as well as many possibilities of tailoring the experience to each individual user. Let me illustrate with a quick example of something that would ***not*** be possible using JWT, or stateless authentication:
+Also known as stateful authentication or just sessions for short, the method, as briefly mentioned above, presents more options to closely observe how clients actually use an application as well as many possibilities of tailoring the experience to each individual user. Let me illustrate with a quick example of something that would ***not*** be possible using a simple JWT strategy:
 
 *You are on a e-commerce site and have put several items in your shopping cart. Items which you have spent a considerable amount of time carefully picking out among hundreds of other items. Suddenly your computer runs out of battery and shuts down, terminating all running processes, including your browser. Or perhaps your internet connection is lost. With sessions implemented you can rest assured that the shopping cart data was stored in the session storage on the server, while if the application only had been using stateless JWT tokens you would have had to find and add the items again.*
 
@@ -285,14 +291,6 @@ What enables a stateful web service to provide a solution to such a scenario is 
 In terms of security, stateful web services comes out on top when compared to a stateless application. The main reason being: security is inhereted by the very nature of statefulness. For authorization strategies using stateful JSON Web Tokens, all session data is stored inside the token itself. Meaning that anyone who is in possession of said token would be able to decode it and read potentially sensitive information. In contrast, merely an identifier of the session is being sent back and forth between client and the authentication server for a stateful web service. Not only is session-related data openly embedded in the token used for a stateless strategy, authorization is also impossible to revoke should a token be compromized. In such a case, an attack is possible until the end of the token lifetime. Hence, why they are usually short lived. Meanwhile, in a stateful application, access can simply be withdrawn by removing corresponding session value from the cache database. One could even go as far as to construct elaborate mechanisms to try and track an abuser. As I felt comfortable implementing it, the stateful variant won in terms of security due to its many natural advantages.
 
 Concentrating further on the difference between what is being sent in cookies, stateless JWT versus simple session identifier, there is a lot to be said about how this has a direct impact on resource demand. As more data is needed for a session, stateless JWT gets heavier. A heavier JWT means a heavier network load. This is not an issue as long as the session state is kept simple, but becomes a problem as features are added and it grows in complexity, as many inbound requests could result in a network bottleneck. On the other hand, stateful session requires as mentioned a place to store session data server-side. Databases management and communication of course adds not only to code complexity, but could just as well become an issue in regards to memory. A lot of testing and cost analysis is required to decide which process is more advantageous and if there are any breakpoints. In my case it was purely decided on what would grant the most personal development, as I had not previously built a stateful application.
-
-Though ???
-
-cons
-scalability (approaching global scale only)
-resource consumption
-implementation
-
 
 <br>
 
@@ -333,15 +331,15 @@ Technical Specification
 <br>
 
 ### Frontend
-
 + [React](https://reactjs.org/): *A JavaScript library for building user interfaces*
 + [Axios](https://github.com/axios/axios): *Promise based HTTP client for the browser and node.js*
 + [styled-components](https://styled-components.com/): *Visual primitives for the component age*
 + [Formik](https://formik.org/): *The World's most popular open source form library for React and React Native*
 + [Yup](https://github.com/jquense/yup): *Dead simple Object schema validation*
 
-### Backend
+<br>
 
+### Backend
 + [Express](https://expressjs.com/): *Fast, unopinionated, minimalist web framework for Node.js*
 + [express-validator](https://express-validator.github.io/): *A set of express.js middlewares that wraps validator.js validator and sanitizer functions*
 + [express-session](https://github.com/expressjs/session): *Simple session middleware for Express*
@@ -349,13 +347,16 @@ Technical Specification
 + [mongoose](https://mongoosejs.com/): *Elegant MongoDB object modeling for Node.js*
 + [ioredis](https://github.com/luin/ioredis): *A robust, performance-focused and full-featured Redis client for Node.js*
 
-### Testing and Style Enforcement
+<br>
 
+### Testing and Style Enforcement
 + [eslint](https://github.com/wesbos/eslint-config-wesbos): *Code validation and formatting according to Airbnb's ES6 standards*
 + [prettier](https://prettier.io/): *An opinionated code formatter*
++ [jest](https://jestjs.io/): *Jest is a delightful JavaScript Testing Framework with a focus on simplicity.*
+
+<br>
 
 ### Documentation, Diagrams and Graphics
-
 + [draw.io](http://draw.io): *Easily create and share professional diagrams*
 + [Illustrator](https://adobe.com/products/photoshop.html): *The state of the art of illustration*
 + [iconmonstr](http://iconmonstr.com): *A wide variety of free SVG icons.*
