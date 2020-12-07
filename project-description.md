@@ -157,12 +157,15 @@ Mobile-first is a relatively new yet universally adopted concept, born out of th
 ### Version Control with Git
 Managing a codebase and tracking development proceedings manually would be an unthinkable feat if it were not for source-code management systems like Git or Subversion. Plenty of hosting platforms exists which allows you to work with Git, such as Bitbucket, GitLab and GitHub to name a few, and since GitHub is both free to use, easy to set up and I already had an account, it made my choice very easy.
 
-Working on a project by yourself and using Git felt at first awkward; since I was developing on my own there was no one else that depended on my commits, and as such there were never any real need to push code to GitHub. So to overcoming this awkwardness I just had to get into the mindset of deciding upon and following through on a workflow, just as if the application were developed by a team. Researching different workflows, I quickly decided on a [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). This means that features are developed on branches secluded from the main trunk, to ultimately be merged into the main trunk after reviewing and testing. Another popular method that I first thought of using was rebasing to get a linear history of project commits; [persuaded by Fredrik Morken](https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1) that this was purely done in vanity and opened up to possibilities of complicating bugtracking, striving for a linear history was discarded.
+Working on a project by yourself and using Git felt at first awkward; since I was developing on my own there was no one else that depended on my commits, and as such there were never any real need to push code to GitHub. So to overcoming this awkwardness I just had to get into the mindset of deciding upon and following through on a workflow, just as if the application were developed by a team. Researching different workflows, I quickly decided on a [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). This means that features are developed on branches secluded from the main trunk, to ultimately be merged into the main trunk after reviewing and testing. Another popular method that I first thought of using was rebasing to get a linear history of project commits; [convinced by Fredrik Morken](https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1) that this was purely done in vanity and opened up to possibilities of complicating tracking of bugs, striving for a linear history was discarded.
 
 With a workflow in place, and [using conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) that are easily readable by both humans and machines, it was just a matter of consistently conforming to it. Formatting commit messages like this could help greatly during continuous intergration and deployment (CI/CD), version documentation to be automatically generated.
 
+<br>
+
 *Example of a commit message formatted by conventional commit rules*
-`feature(map): Adds controller for retrieving positional data based on coordinates`
+
+    feature(map): Adds controller for retrieving positional data based on coordinates
 
 <br>
 
@@ -172,7 +175,13 @@ With a workflow in place, and [using conventional commits](https://www.conventio
 <br>
 
 ### Setting up the Workspace
-Content
+A project workspace can be configured endlessly, so it is of importance to configure purposefully, and not just because it is possible. Some things requires configuration to work at all while a lot of what is used usually comes with defaults. Globetrotters frontend, for example, utilizes the `create-react-app` script along with its `--typescript` flag which [provides a plethora of default configurations](https://github.com/facebook/create-react-app) needed to start coding. While you could be tempted to start writing code after letting the script finish, it has really just exempted us from doing any groundwork. `create-react-app` not only sets up tons of build tool dependencies, development server with hot reloading and a service worker, it also hides all this away. Which is great for beginner and intermediate development, but is frowned upon and considered bloated by more experienced developers and architects as it comes at the cost of control along with dependencies you might never employ.
+
+The next step was to install [the package dependencies selected specifically for this project](#frontend). Tools I had deemed helpful, but not neccessary, and would increase quality of life during project progression. Because the Globetrotter frontend is written in TypeScript, I also had to install each package's type definitions, were they not included.
+
+Continuing, I administered configuration files for the text editor, Prettier, ESLint and TypeScript according to [airbnb's famous standards](https://www.npmjs.com/package/eslint-config-airbnb), overwriting some of their rules as I disagreed with them. Such as enforcing default exports in files with a single export, an annoying rule as I knew there would be more exports added further down the line, amongst other.
+
+Setup was finalized by adding configuration files for Git, dictating which files to ignore and how files should be read, as well as placing environment variables containing the key enabling the Google Maps API and the URL to my backend.
 
 <br>
 
@@ -337,7 +346,7 @@ Technical Specification
 <br>
 
 ### Testing and Style Enforcement
-+ [eslint](https://github.com/wesbos/eslint-config-wesbos): *Code validation and formatting according to Airbnb's ES6 standards*
++ [eslint](https://www.npmjs.com/package/eslint-config-airbnb): *Code validation and formatting according to Airbnb's ES6 standards*
 + [prettier](https://prettier.io/): *An opinionated code formatter*
 + [jest](https://jestjs.io/): *Jest is a delightful JavaScript Testing Framework with a focus on simplicity.*
 
