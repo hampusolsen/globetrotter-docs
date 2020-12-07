@@ -143,11 +143,11 @@ The [*Model-View-Controller* pattern](https://www.codecademy.com/articles/mvc) i
 <br>
 
 ### Responsive User Interface
-As previously mentioned in the project scope, the application was made with the intention of being responsive at three breakpoints. A very common approach that satisfies all types of devices. While mobile devices' screens are evolving with every generation, growing larger and larger, and pixel density also improves, so does the optimal breakpoints also shift. Of course, every consumer does not upgrade their phone on each generational swap, but to make sure the latest and greatest is supported it might be a good idea to update ones breakpoints. An effortless task if these are saved as constants, either with environment variables or in a simple `.js`-file. Globetrotter applies this by setting the breakpoints at pixel values of 414, 800 and 1080 using a `min-width` media query, representing [current market availability of phone, tablet and laptop screen resolutions](https://gs.statcounter.com/screen-resolution-stats/), adhereing to mobile-first design philosophy.
+As mentioned previously in the project scope, the application was made with the intention of being responsive at three breakpoints. A very common approach that satisfies all types of devices. While mobile devices' screens are evolving with every generation, growing larger and larger, and pixel density also improves, so does the optimal breakpoints also shift. Of course, every consumer does not upgrade their phone on each generational swap, but to make sure the latest and greatest is supported it might be a good idea to update ones breakpoints. An effortless task if these are saved as constants, either with environment variables or in a simple `.js`-file. Globetrotter applies this by setting the breakpoints at pixel values of 414, 800 and 1080 using a `min-width` media query, representing [current market availability of phone, tablet and laptop screen resolutions](https://gs.statcounter.com/screen-resolution-stats/), adhereing to mobile-first design philosophy.
 
 <br>
 
-Mobile-first is a relatively new yet universally adopted concept, born out of the fact that [more than half of daily internet users are using a mobile device](https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf) to browse the web. Developing in a mobile-first way means prioritizing development and optimization for smaller screens, and adapting to larger ones later. Taking pointers from [Facebook's statistics](https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/), which shows that 98.3% of their visitors used mobile devices to access the site, coupled with the fact that Globetrotter is a type of social media platform, a mobile-first approach almost seems non-negotiable. An astonishing 79.9% exclusively used their smartphone on the web application.
+Mobile-first is a relatively new yet universally adopted concept, born out of the fact that [more than half of daily internet users are using a mobile device](https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf) to browse the web. Developing in a mobile-first way means prioritizing development and optimization for smaller screens, and adapting to larger ones later. Taking pointers from [Facebook's statistics](https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/), which shows that an astonishing 98.3% of their visitors used mobile devices to access the site, coupled with the fact that Globetrotter is a type of social media platform, a mobile-first approach almost seemed non-negotiable.
 
 <br>
 
@@ -157,18 +157,16 @@ Mobile-first is a relatively new yet universally adopted concept, born out of th
 <br>
 
 ### Version Control with Git
-+ github
-+ awkward when solo programming / great history tracker / reminder
-+ commits after session or task completed
+Managing a codebase and tracking development proceedings manually would be an unthinkable feat if it were not for source-code management systems like Git or Subversion. Plenty of hosting platforms exists which allows you to work with Git, such as Bitbucket, GitLab and GitHub to name a few, and since GitHub is both free to use, easy to set up and I already had an account, it made my choice very easy.
 
-[comment]: # (https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
-workflow
+Working on a project by yourself and using Git felt at first awkward; since I was developing on my own there was no one else that depended on my commits, and as such there were never any real need to push code to GitHub. So to overcoming this awkwardness I just had to get into the mindset of deciding upon and following through on a workflow, just as if the application were developed by a team. Researching different workflows, I quickly decided on a [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). This means that features are developed on branches secluded from the main trunk, to ultimately be merged into the main trunk after reviewing and testing. Another popular method that I first thought of using was rebasing to get a linear history of project commits; [persuaded by Fredrik Morken](https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1) that this was purely done in vanity and opened up to possibilities of complicating bugtracking, striving for a linear history was discarded.
 
-[comment]: # (https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1)
-non-linear vs linear history
+With a workflow in place, and [using conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) that are easily readable by both humans and machines, it was just a matter of consistently conforming to it. Formatting commit messages like this could help greatly during continuous intergration and deployment (CI/CD).
 
-[comment]: # (https://www.conventionalcommits.org/en/v1.0.0/#summary)
-commit naming convention
+*Example of a commit message formatted by conventional commit rules*
+```shell
+  git commit -m "feature(map): Adds controller for retrieving positional data based on coordinates"
+```
 
 <br>
 
@@ -203,7 +201,7 @@ containers vs virtual environments
 ### Technical Documentation
 In an effort to make the task of writing documentation not so overwhelming, I believed it to be a good idea to spread it throughout the projects duration. Documenting functions and data structures close before or after their creation helps with keeping the documentation correct as well as easy and fast to write. Usually technical documentation tends to be automatically generated by tools such as [Swagger](https://swagger.io/), but as I possessed no prior knowledge of their utilization and already felt as if there were enough things to consider, adding another tool and also learning how to use it  was out of the question.
 
-After having read so much documentation on Github and elsewhere I knew I could not possibly write my own in any other syntax than *[Markdown](https://en.wikipedia.org/wiki/Markdown)*, even though *[reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText)* is a solid contender and widely used; picking anything else would feel like committing a crime. 
+After having read so much documentation on Github and elsewhere I knew I could not possibly write my own in any other syntax than *[Markdown](https://en.wikipedia.org/wiki/Markdown)*, even though *[reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText)* is a solid contender and widely used; picking anything else would feel like committing a crime.
 
 To accomodate the widest array of platforms and pursuit the highest percentage of compatibility I found the [commonmark specification](https://spec.commonmark.org/0.29/) to align closest with my writing style while achieving these goals. So I have followed their syntax guidelines while writing this report, only deviating when it comes commenting, where I found this [interesting stackoverflow post](https://stackoverflow.com/questions/4823468/comments-in-markdown/32190021#32190021), proving `[comment]: # (<comment here>)` with an empty line above, to provide best platform coverage.
 
@@ -245,7 +243,7 @@ Before even beginning to write about authentication and authorization, we must f
 
 <br>
 
-> “Encryption works ... Unfortunately, endpoint security is so terrifically weak ...”
+    “Encryption works ... Unfortunately, endpoint security is so terrifically weak ...”
 
 *[Edward Snowden](https://twitter.com/snowden)*
 
@@ -273,7 +271,7 @@ For this project I will not be using the following methods, but felt as they wer
 #### Stateful and Stateless Web Services
 Also known as stateful authentication or just sessions for short, the method, as briefly mentioned above, presents more options to closely observe how clients actually use an application as well as many possibilities of tailoring the experience to each individual user. Let me illustrate with a quick example of something that would ***not*** be possible using a simple JWT strategy:
 
-*You are on a e-commerce site and have put several items in your shopping cart. Items which you have spent a considerable amount of time carefully picking out among hundreds of other items. Suddenly your computer runs out of battery and shuts down, terminating all running processes, including your browser. Or perhaps your internet connection is lost. With sessions implemented you can rest assured that the shopping cart data was stored in the session storage on the server, while if the application only had been using stateless JWT tokens you would have had to find and add the items again.*
+    You are on a e-commerce site and have put several items in your shopping cart. Items which you have spent a considerable amount of time carefully picking out among hundreds of other items. Suddenly your computer runs out of battery and shuts down, terminating all running processes, including your browser. Or perhaps your internet connection is lost. With sessions implemented you can rest assured that the shopping cart data was stored in the session storage on the server, while if the application only had been using stateless JWT tokens you would have had to find and add the items again.
 
 Not at a fault of the site owner, but this might just make them lose that one customer.
 
