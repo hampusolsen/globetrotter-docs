@@ -46,7 +46,7 @@ Table of Contents
   + [Responsive User Interface](#responsive-user-interface)
   + [Version Control with Git](#version-control-with-git)
   + [Setting up the Workspace](#setting-up-the-workspace)
-    + [Environment Variables and Configuration](#environment-variables-and-configuration)
+    + [Configuring the Frontend](#configuring-the-frontend)
     + [Containerization](#containerization)
   + [Technical Documentation](#technical-documentation)
   + [Database Management](#database-management)
@@ -133,7 +133,7 @@ Strategy and Implementation
 <br>
 
 ### The Design Pattern
-The [*Model-View-Controller* pattern](https://www.codecademy.com/articles/mvc) is currently dominating fullstack web applications' architecture and it is becoming increasingly hard to find frameworks not building upon this concept. With its fairly simplistic approach that invites to a logical organization of a projects file structure, it is no wonder that the pattern is widely used. Understanding how the different parts work together is, as hinted at, relatively easy, and so in turn also eases development as functionality is clearly defined. For this project the backend provides both model and controller functionality by Mongoose models and route handlers respectively whilet the frontend, powered by React, works as the view layer.
+The [*Model-View-Controller* pattern](https://www.codecademy.com/articles/mvc) is currently dominating fullstack web applications' architecture and it is becoming increasingly hard to find frameworks not building upon this concept. With its fairly simplistic approach that invites to a logical organization of a projects file structure, it is no wonder that the pattern is widely used. Understanding how the different parts work together is, as hinted at, relatively easy, and so in turn also eases development as functionality is clearly defined. For this project the backend provides both model and controller functionality by Mongoose models and route handlers respectively while the frontend, powered by React, acts as the view layer.
 
 <br>
 
@@ -143,9 +143,9 @@ The [*Model-View-Controller* pattern](https://www.codecademy.com/articles/mvc) i
 <br>
 
 ### Responsive User Interface
-As mentioned previously in the project scope, the application was made with the intention of being responsive at three breakpoints. A very common approach that satisfies all types of devices. While mobile devices' screens are evolving with every generation, growing larger and larger, and pixel density also improves, so does the optimal breakpoints also shift. Of course, every consumer does not upgrade their phone on each generational swap, but to make sure the latest and greatest is supported it might be a good idea to update ones breakpoints. An effortless task if these are saved as constants, either with environment variables or in a simple `.js`-file. Globetrotter applies this by setting the breakpoints at pixel values of 414, 800 and 1080 using a `min-width` media query, representing [current market availability of phone, tablet and laptop screen resolutions](https://gs.statcounter.com/screen-resolution-stats/), adhereing to mobile-first design philosophy.
+As mentioned previously in the project scope, the application was made with the intention of being responsive at three breakpoints. A very common approach that satisfies all types of devices. While mobile devices' screens are evolving with every generation, often growing larger, and pixel density also improving, so does the optimal breakpoints also slightly shift. Of course, every consumer do not upgrade their phones on each generational swap, but to make sure the latest and greatest remains supported it is a good idea to update the breakpoints used. An effortless task if these are saved as constants, either with environment variables or in a simple `.js`-file. Globetrotter applies this by setting the breakpoints at pixel values of 414, 800 and 1080 using a `min-width` media query, representing [current market availability of phone, tablet and laptop screen resolutions](https://gs.statcounter.com/screen-resolution-stats/), adhereing to *mobile-first* design philosophy.
 
-Mobile-first is a relatively new yet universally adopted concept, born out of the fact that [more than half of daily internet users are using a mobile device](https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf) to browse the web. Developing in a mobile-first way means prioritizing development and optimization for smaller screens, and adapting to larger ones later. Taking pointers from [Facebook's statistics](https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/), which shows that an astonishing 98.3% of their visitors used mobile devices to access the site, coupled with the fact that Globetrotter is a type of social media platform, a mobile-first approach almost seemed non-negotiable.
+Mobile-first is a relatively new yet universally adopted concept, born out of the fact that [more than half of daily internet users are using a mobile device](https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf) to browse the web. Developing according to this philosophy means prioritizing development and optimization for smaller screens, and adapting to larger ones later. Taking pointers from [Facebook's statistics](https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/), which shows that an astonishing 98.3% of their visitors used mobile devices to access the site, coupled with the fact that Globetrotter is a type of social media platform, a mobile-first approach almost seemed non-negotiable.
 
 <br>
 
@@ -157,9 +157,9 @@ Mobile-first is a relatively new yet universally adopted concept, born out of th
 ### Version Control with Git
 Managing a codebase and tracking development proceedings manually would be an unthinkable feat if it were not for source-code management systems like Git or Subversion. Plenty of hosting platforms exists which allows you to work with Git, such as Bitbucket, GitLab and GitHub to name a few, and since GitHub is both free to use, easy to set up and I already had an account, it made my choice very easy.
 
-Working on a project by yourself and using Git felt at first awkward; since I was developing on my own there was no one else that depended on my commits, and as such there were never any real need to push code to GitHub. So to overcoming this awkwardness I just had to get into the mindset of deciding upon and following through on a workflow, just as if the application were developed by a team. Researching different workflows, I quickly decided on a [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). This means that features are developed on branches secluded from the main trunk, to ultimately be merged into the main trunk after reviewing and testing. Another popular method that I first thought of using was rebasing to get a linear history of project commits; [convinced by Fredrik Morken](https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1) that this was purely done in vanity and opened up to possibilities of complicating tracking of bugs, striving for a linear history was discarded.
+Working on a project by yourself and using Git felt at first awkward; since I was developing on my own there was no one else that depended on my commits, and as such there were never any real need to push code to GitHub. So to overcoming this awkwardness I just had to get into the mindset of deciding upon and following through on a workflow, just as if the application were developed by a team. Researching different workflows, I quickly decided on a [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). This means that development is done on branches secluded from the main trunk, to ultimately be merged after reviewing and testing. Another popular method that I first thought of using was rebasing to get a linear history of project commits; [convinced by Fredrik Morken](https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1) that this was purely done in vanity and opened up to possibilities of complicating tracking of bugs, striving for a linear history was discarded.
 
-With a workflow in place, and [using conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) that are easily readable by both humans and machines, it was just a matter of consistently conforming to it. Formatting commit messages like this could help greatly during continuous intergration and deployment (CI/CD), version documentation to be automatically generated.
+With a workflow in place, and [using conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) that are easily readable by both humans and machines, it was just a matter of consistently conforming to it. Formatting commit messages like this could help greatly during continuous integration and deployment (CI/CD), version documentation to be automatically generated.
 
 <br>
 
@@ -177,24 +177,27 @@ With a workflow in place, and [using conventional commits](https://www.conventio
 ### Setting up the Workspace
 A project workspace can be configured endlessly, so it is of importance to configure purposefully, and not just because it is possible. Some things requires configuration to work at all while a lot of what is used usually comes with defaults. Globetrotters frontend, for example, utilizes the `create-react-app` script along with its `--typescript` flag which [provides a plethora of default configurations](https://github.com/facebook/create-react-app) needed to start coding. While you could be tempted to start writing code after letting the script finish, it has really just exempted us from doing any groundwork. `create-react-app` not only sets up tons of build tool dependencies, development server with hot reloading and a service worker, it also hides all this away. Which is great for beginner and intermediate development, but is frowned upon and considered bloated by more experienced developers and architects as it comes at the cost of control along with dependencies you might never employ.
 
-The next step was to install [the package dependencies selected specifically for this project](#frontend). Tools I had deemed helpful, but not neccessary, and would increase quality of life during project progression. Because the Globetrotter frontend is written in TypeScript, I also had to install each package's type definitions, were they not included.
-
-Continuing, I administered configuration files for the text editor, Prettier, ESLint and TypeScript according to [airbnb's famous standards](https://www.npmjs.com/package/eslint-config-airbnb), overwriting some of their rules as I disagreed with them. Such as enforcing default exports in files with a single export, an annoying rule as I knew there would be more exports added further down the line, amongst other.
-
-Setup was finalized by adding configuration files for Git, dictating which files to ignore and how files should be read, as well as placing environment variables containing the key enabling the Google Maps API and the URL to my backend.
-
 <br>
 
-#### Environment Variables and Configuration
-+ natural selection of environment variables
+#### Configuring the Frontend
+The next step was to install the [package dependencies selected specifically for Globetrotter](#frontend). Tools I had deemed helpful, though not neccessary, and would increase quality of life during project progression. Because the Globetrotter frontend is written in TypeScript, I also had to install each package's type definitions, were they not included.
+
+Continuing, I administered configuration files for the text editor, code formatter, style enforcer and TypeScript according to [airbnb's famous standards](https://www.npmjs.com/package/eslint-config-airbnb), overwriting some of their rules as I disagreed with them. Such as enforcing default exports in files with a single export. An annoying rule, because often there would be more exports added further down the line. *Rules are made to be broken*, the saying goes.
+
+Setup was finalized by adding configuration files for Git, `.gitignore` and `.gitattributes`, dictating which files to ignore and how files should be interpreted, as well as placing environment variables containing the key enabling the Google Maps API and the URL to my backend.
 
 <br>
 
 #### Containerization
-Content
+Globetrotter's backend consists of more than merely a single server providing endpoints for a REST API; a network of servers are working together to store, process and deliver the data that drives the frontend application. With code essential only to the various parts of the backend, it is unneccessary to clutter ones computer by installing these dependancies globally. More often than not, dependencies versions varies between projects because they are rarely kept up-to-date, and neither should they needlessly be. Maintaining a project that requires perpetual support of keeping updated dependencies is simply not a viable strategy. Not for technical reasons and certainly not for financial ones.
 
-[comment]: # (https://www.ibm.com/cloud/blog/containers-vs-vms)
-containers vs virtual environments
+So, to keep ones development machine lean, mean and stripped of non-vital code, we have the ability to containerize our local development environment. [Containerization was modernized in 2013](https://www.ibm.com/cloud/blog/containers-vs-vms) by the introduction of Docker and has since then gained more and more traction due to its attractive qualities pertaining to cloud computing. Docker has become quintessential for horizontal scaling and microservice architecture.
+
+<p align="center">
+  <img src="./resources/containerization-vs-vms.svg" width="80%">
+  <br>
+  <em><a href=""></a></em>
+</p>
 
 <br>
 
@@ -208,7 +211,7 @@ In an effort to make the task of writing documentation not so overwhelming, I be
 
 After having read so much documentation on Github and elsewhere I knew I could not possibly write my own in any other syntax than *[Markdown](https://en.wikipedia.org/wiki/Markdown)*, even though *[reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText)* is a solid contender and widely used; picking anything else would feel like committing a crime.
 
-To accomodate the widest array of platforms and pursuit the highest percentage of compatibility I found the [commonmark specification](https://spec.commonmark.org/0.29/) to align closest with my writing style while achieving these goals. So I have followed their syntax guidelines while writing this report, only deviating when it comes commenting, where I found this [interesting stackoverflow post](https://stackoverflow.com/questions/4823468/comments-in-markdown/32190021#32190021), proving `[comment]: # (<comment here>)` with an empty line above, to provide best platform coverage.
+To accomodate the widest array of platforms and pursuit the highest percentage of compatibility I found the [commonmark specification](https://spec.commonmark.org/0.29/) to align closest with my writing style while achieving these goals. So I have followed their syntax guidelines while writing this report, only deviating when it comes to commenting, where I found [an interesting stackoverflow post](https://stackoverflow.com/questions/4823468/comments-in-markdown/32190021#32190021), proving `[comment]: # (<comment here>)` with an empty line above, to provide best platform coverage.
 
 <br>
 
