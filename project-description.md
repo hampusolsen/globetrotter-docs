@@ -196,7 +196,7 @@ So, to keep ones development machine lean, mean and stripped of non-vital code, 
 <p align="center">
   <img src="./resources/containerization-vs-vms.svg" width="80%">
   <br>
-  <em><a href=""></a></em>
+  <em>Showcases the structural difference between servers using containers and virtual machines.</em>
 </p>
 
 <br>
