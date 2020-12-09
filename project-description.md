@@ -43,19 +43,19 @@ Table of Contents
   + [Methodology](#methodology)
 + [Strategy and Implementation](#strategy-and-implementation)
   + [The Design Pattern](#the-design-pattern)
-  + [Responsive User Interface](#responsive-user-interface)
   + [Version Control with Git](#version-control-with-git)
   + [Setting up the Workspace](#setting-up-the-workspace)
     + [Configuring the Frontend](#configuring-the-frontend)
     + [Containerization](#containerization)
-  + [Technical Documentation](#technical-documentation)
+  + [Documentation](#documentation)
   + [Database Management](#database-management)
     + [Caching Data](#caching-data)
     + [Distributed and Document-based](#distributed-and-document-based)
   + [Authentication and Authorization](#authentication-and-authorization)
     + [Honorable Mentions](#honorable-mentions)
     + [Stateful and Stateless Web Services](#stateful-and-stateless-web-services)
-  + [Global State Management](#global-state-management)
+  + [Responsive User Interface](#responsive-user-interface)
+  + [State Management](#state-management)
 + [Discussion](#discussion)
 + [Technical Specification](#technical-specification)
   + [Frontend](#frontend)
@@ -64,7 +64,7 @@ Table of Contents
   + [Documentation, Diagrams and Graphics](#documentation-diagrams-and-graphics)
 + [API & Database Specifications](#api--database-specifications)
   + [E/R-diagram](#er-diagram)
-  + [Documentation](#documentation)
+  + [Documentation](#documentation-1)
 + [Addendum](#addendum)
   + [Gantt Schedule](#gantt-schedule)
   + [Mockups and Styleguide](#mockups-and-styleguide)
@@ -82,7 +82,7 @@ That is why I, in this project, have chosen to not only immerse myself in a cog 
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -111,7 +111,7 @@ A subject in itself, tests do not to cover any desirable amount of the code base
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -123,7 +123,7 @@ While contemplating my work process I started with tasks that I knew would be of
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -137,19 +137,7 @@ The [*Model-View-Controller* pattern](https://www.codecademy.com/articles/mvc) i
 
 <br>
 
-*[To the top](#table-of-contents)*
-
-<br>
-<br>
-
-### Responsive User Interface
-As mentioned previously in the project scope, the application was made with the intention of being responsive at three breakpoints. A very common approach that satisfies all types of devices. While mobile devices' screens are evolving with every generation, often growing larger, and pixel density also improving, so does the optimal breakpoints also slightly shift. Of course, every consumer do not upgrade their phones on each generational swap, but to make sure the latest and greatest remains supported it is a good idea to update the breakpoints used. An effortless task if these are saved as constants, either with environment variables or in a simple `.js`-file. Globetrotter applies this by setting the breakpoints at pixel values of 414, 800 and 1080 using a `min-width` media query, representing [current market availability of phone, tablet and laptop screen resolutions](https://gs.statcounter.com/screen-resolution-stats/), adhereing to *mobile-first* design philosophy.
-
-Mobile-first is a relatively new yet universally adopted concept, born out of the fact that [more than half of daily internet users are using a mobile device](https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf) to browse the web. Developing according to this philosophy means prioritizing development and optimization for smaller screens, and adapting to larger ones later. Taking pointers from [Facebook's statistics](https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/), which shows that an astonishing 98.3% of their visitors used mobile devices to access the site, coupled with the fact that Globetrotter is a type of social media platform, a mobile-first approach almost seemed non-negotiable.
-
-<br>
-
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -159,7 +147,7 @@ Managing a codebase and tracking development proceedings manually would be an un
 
 Working on a project by yourself and using Git felt at first awkward; since I was developing on my own there was no one else that depended on my commits, and as such there were never any real need to push code to GitHub. So to overcoming this awkwardness I just had to get into the mindset of deciding upon and following through on a workflow, just as if the application were developed by a team. Researching different workflows, I quickly decided on a [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). This means that development is done on branches secluded from the main trunk, to ultimately be merged after reviewing and testing. Another popular method that I first thought of using was rebasing to get a linear history of project commits; [convinced by Fredrik Morken](https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1) that this was purely done in vanity and opened up to possibilities of complicating tracking of bugs, striving for a linear history was discarded.
 
-With a workflow in place, and [using conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) that are easily readable by both humans and machines, it was just a matter of consistently conforming to it. Formatting commit messages like this could help greatly during continuous integration and deployment (CI/CD), version documentation to be automatically generated.
+With a workflow in place, and [using conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) that are easily readable by both humans and machines, it was just a matter of consistently conforming to it. Formatting commit messages like this could help greatly during continuous integration and deployment (CI/CD), enabling version documentation to be automatically generated.
 
 <br>
 
@@ -169,7 +157,7 @@ With a workflow in place, and [using conventional commits](https://www.conventio
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -189,24 +177,30 @@ Setup was finalized by adding configuration files for Git, `.gitignore` and `.gi
 <br>
 
 #### Containerization
-Globetrotter's backend consists of more than merely a single server providing endpoints for a REST API; a network of servers are working together to store, process and deliver the data that drives the frontend application. With code essential only to the various parts of the backend, it is unneccessary to clutter ones computer by installing these dependancies globally. More often than not, dependencies versions varies between projects because they are rarely kept up-to-date, and neither should they needlessly be. Maintaining a project that requires perpetual support of keeping updated dependencies is simply not a viable strategy. Not for technical reasons and certainly not for financial ones.
+Globetrotter's backend consists of more than merely a single server providing endpoints for a REST API; a network of servers are working together to store, process and deliver the data that drives the frontend application. With code essential only to the various parts of the backend, it is unneccessary to clutter ones computer by installing these dependancies globally. More often than not, dependencies versions varies between projects because they are rarely kept up-to-date, and neither should they needlessly be. Maintaining a project that requires perpetual support of keeping updated dependencies is simply not a viable strategy. Not for technical reasons and certainly not for financial ones. 
 
-So, to keep ones development machine lean, mean and stripped of non-vital code, we have the ability to containerize our local development environment. [Containerization was modernized in 2013](https://www.ibm.com/cloud/blog/containers-vs-vms) by the introduction of Docker and has since then gained more and more traction due to its attractive qualities pertaining to cloud computing. Docker has become quintessential for horizontal scaling and microservice architecture.
+So, to keep ones development machine lean and stripped of non-vital code, we have the option of isolating our local development environments. Accomplishing quarantined conditions can be achieved in several ways, but two of the most common ways are by using either virtual machines or containers. Both methods have their advantages and can even be used in unison. [Containerization was modernized in 2013](https://www.ibm.com/cloud/blog/containers-vs-vms) by the introduction of Docker and has since then gained more and more traction due to its attractive qualities pertaining to cloud computing. Docker has become quintessential for horizontal scaling and microservice architecture.
+
+<br>
 
 <p align="center">
-  <img src="./resources/containerization-vs-vms.svg" width="80%">
+  <img src="./resources/containerization-vs-vms.svg" width="60%">
   <br>
-  <em>Showcases the structural difference between servers using containers and virtual machines.</em>
+  <em>The structural difference between using containers versus virtual machines.</em>
 </p>
 
 <br>
 
-*[To the top](#table-of-contents)*
+A containerized solution uses very lightweight image descriptions to spin up their respective environment. The image file will tell Docker exactly what the application container needs to be able to do its job. Nothing else. To handle communication between containers, Docker grants the ability to create enclosed networks in which a container can be appointed a member of. It is this communicative attribute that paved way for Dockers explosively increased usage, and allows its users to spin up an entire ecosystem of servers with a single command.
+
+<br>
+
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
 
-### Technical Documentation
+### Documentation
 In an effort to make the task of writing documentation not so overwhelming, I believed it to be a good idea to spread it throughout the projects duration. Documenting functions and data structures close before or after their creation helps with keeping the documentation correct as well as easy and fast to write. Usually technical documentation tends to be automatically generated by tools such as [Swagger](https://swagger.io/), but as I possessed no prior knowledge of their utilization and already felt as if there were enough things to consider, adding another tool and also learning how to use it  was out of the question.
 
 After having read so much documentation on Github and elsewhere I knew I could not possibly write my own in any other syntax than *[Markdown](https://en.wikipedia.org/wiki/Markdown)*, even though *[reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText)* is a solid contender and widely used; picking anything else would feel like committing a crime.
@@ -215,7 +209,7 @@ To accomodate the widest array of platforms and pursuit the highest percentage o
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -235,7 +229,7 @@ Content
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -277,7 +271,7 @@ For this project I will not be using the following methods, but felt as they wer
 <br>
 
 #### Stateful and Stateless Web Services
-Also known as stateful authentication or just sessions for short, the method, as briefly mentioned above, presents more options to closely observe how clients actually use an application as well as many possibilities of tailoring the experience to each individual user. Let me illustrate with a quick example of something that would ***not*** be possible using a simple JWT strategy:
+Also known as stateful authentication or just sessions for short, the method, as briefly mentioned above, presents more options to closely observe how clients actually use an application as well as many possibilities of tailoring the experience to each individual user. Let me illustrate with a quick example of something that would not be possible using a simple JWT strategy:
 
 > You are on a e-commerce site and have put several items in your shopping cart. Items which you have spent a considerable amount of time carefully picking out among hundreds of other items. Suddenly your computer runs out of battery and shuts down, terminating all running processes, including your browser. Or perhaps your internet connection is lost. With sessions implemented you can rest assured that the shopping cart data was stored in the session storage on the server, while if the application only had been using stateless JWT tokens you would have had to find and add the items again.
 
@@ -293,21 +287,48 @@ Concentrating further on the difference between what is being sent in cookies, s
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
 
-### Global State Management
-Content
+### Responsive User Interface
+As mentioned previously in the project scope, the application was made with the intention of being responsive at three breakpoints. A very common approach that satisfies all types of devices. While mobile devices' screens are evolving with every generation, often growing larger, and pixel density also improving, so does the optimal breakpoints also slightly shift. Of course, every consumer do not upgrade their phones on each generational swap, but to make sure the latest and greatest remains supported it is a good idea to update the breakpoints used. An effortless task if these are saved as constants, either with environment variables or in a simple `.js`-file. Globetrotter applies this by setting the breakpoints at pixel values of 414, 800 and 1080 using a `min-width` media query, representing [current market availability of phone, tablet and laptop screen resolutions](https://gs.statcounter.com/screen-resolution-stats/), adhereing to *mobile-first* design philosophy.
 
-* "overrated" / "hyped", often unneccessary with a truely global state
-* per view / several view contexts
-* complexity.. jotai/recoil -> context -> redux/rxjs/mobx
+Mobile-first is a relatively new yet universally adopted concept, born out of the fact that [more than half of daily internet users are using a mobile device](https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf) to browse the web. Developing according to this philosophy means prioritizing development and optimization for smaller screens, and adapting to larger ones later. Taking pointers from [Facebook's statistics](https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/), which shows that an astonishing 98.3% of their visitors used mobile devices to access the site, coupled with the fact that Globetrotter is a type of social media platform, a mobile-first approach almost seemed non-negotiable.
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
+
+<br>
+<br>
+
+### State Management
+Managing access to and manipulation of data is arguably the most difficult task when building the frontend of a web application. Attempting to solve this problem, or at least alleviate some of the involved complexity, there is an abundance of readily available libraries on any package manager. These libraries themselves comes in turn with various degrees of complexity, not uncommonly complicating state management even further, and might even entrap you in very specific workflows which might not have been accounted for. 
+
+React, being a library and not a framework, often leaves it up to the developer to decide on what toolkit should be used. Since *state* plays such a pivotal part of React, it provides us with several ways to handle it, effectively making means of managing state in any other way obsolete. Even so, a huge chunk of developers opt for solutions outside of the library, myself included. The reason being, as it often is, a matter of preference; modularity, boilerplate and readability have been my focal points picking out a state manager. After extensive research, I settled on [*jotai*](https://github.com/pmndrs/jotai), a highly flexible library with minimal boilerplate mimicking the *hooks* API. A seemingly perfect fit considering my search criterias.
+
+Though I had a way of easily reading and manipulating a global state, I took care not to abuse it; only using it when certain of its neccessity. Having experience of many different state managers prior to making Globetrotter's frontend, and drawing from intelligence gained through research, it felt very natural to decide what state should exist globally and which should be local. Contemplating how this thought process could be articulated, I felt it more both easier to understand and to explain by visualizing it.
+
+<br>
+<br>
+<br>
+
+<p align="center">
+  <img src="./diagrams/state-decision-flow.svg" width="70%">
+  <br>
+  <br>
+  <em>Visualization of the state placement decision</em>
+</p>
+
+<br>
+
+A quite basic yet proficient method for making snap rulings on where state should live. 
+
+<br>
+
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -320,7 +341,7 @@ Blehe
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -363,7 +384,7 @@ Technical Specification
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -387,12 +408,10 @@ API & Database Specifications
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
-
-<hr>
 
 ### Documentation
 <br>
@@ -401,12 +420,10 @@ Click [here](https://github.com/hampusolsen/globetrotter-server/blob/master/docs
 
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
-
-<hr>
 
 Addendum
 --------
@@ -421,7 +438,7 @@ Addendum
   </a>
 </p>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
 
 <br>
 <br>
@@ -456,4 +473,4 @@ Addendum
 <br>
 <br>
 
-*[To the top](#table-of-contents)*
+[*To the top*](#table-of-contents)
