@@ -316,7 +316,7 @@ Though I had a way of easily reading and manipulating a global state, I took car
 <br>
 
 <p align="center">
-  <img src="./diagrams/state-decision-flow.svg" width="70%">
+  <img src="./diagrams/state-decision-flow.svg" width="60%">
   <br>
   <br>
   <em>Visualization of the state placement decision</em>
