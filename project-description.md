@@ -54,6 +54,7 @@ Table of Contents
   + [Authentication and Authorization](#authentication-and-authorization)
     + [Honorable Mentions](#honorable-mentions)
     + [Stateful and Stateless Web Services](#stateful-and-stateless-web-services)
+  + [Authentication Flow](#authentication-flow)
   + [Responsive User Interface](#responsive-user-interface)
   + [State Management](#state-management)
 + [Discussion](#discussion)
@@ -184,7 +185,7 @@ So, to keep ones development machine lean and stripped of non-vital code, we hav
 <br>
 
 <p align="center">
-  <img src="./resources/containerization-vs-vms.svg" width="60%">
+  <img src="./resources/containerization-vs-vms.svg" width="70%">
   <br>
   <em>The structural difference between using containers versus virtual machines.</em>
 </p>
@@ -273,7 +274,11 @@ For this project I will not be using the following methods, but felt as they wer
 #### Stateful and Stateless Web Services
 Also known as stateful authentication or just sessions for short, the method, as briefly mentioned above, presents more options to closely observe how clients actually use an application as well as many possibilities of tailoring the experience to each individual user. Let me illustrate with a quick example of something that would not be possible using a simple JWT strategy:
 
+<br>
+
 > You are on a e-commerce site and have put several items in your shopping cart. Items which you have spent a considerable amount of time carefully picking out among hundreds of other items. Suddenly your computer runs out of battery and shuts down, terminating all running processes, including your browser. Or perhaps your internet connection is lost. With sessions implemented you can rest assured that the shopping cart data was stored in the session storage on the server, while if the application only had been using stateless JWT tokens you would have had to find and add the items again.
+
+<br>
 
 Not at a fault of the site owner, but this might just make them lose that one customer.
 
@@ -284,6 +289,36 @@ What enables a stateful web service to provide a solution to such a scenario is 
 In terms of security, stateful web services comes out on top when compared to a stateless application. The main reason being: security is inhereted by the very nature of statefulness. For authorization strategies using stateful JSON Web Tokens, all session data is stored inside the token itself. Meaning that anyone who is in possession of said token would be able to decode it and read potentially sensitive information. In contrast, merely an identifier of the session is being sent back and forth between client and the authentication server for a stateful web service. Not only is session-related data openly embedded in the token used for a stateless strategy, authorization is also impossible to revoke should a token be compromized. In such a case, an attack is possible until the end of the token lifetime. Hence, why they are usually short lived. Meanwhile, in a stateful application, access can simply be withdrawn by removing corresponding session value from the cache database. One could even go as far as to construct elaborate mechanisms to try and track an abuser. As I felt comfortable implementing it, the stateful variant won in terms of security due to its many natural advantages.
 
 Concentrating further on the difference between what is being sent in cookies, stateless JWT versus simple session identifier, there is a lot to be said about how this has a direct impact on resource demand. As more data is needed for a session, stateless JWT gets heavier. A heavier JWT means a heavier network load. This is not an issue as long as the session state is kept simple, but becomes a problem as features are added and it grows in complexity, as many inbound requests could result in a network bottleneck. On the other hand, stateful session requires as mentioned a place to store session data server-side. Databases management and communication of course adds not only to code complexity, but could just as well become an issue in regards to memory. A lot of testing and cost analysis is required to decide which process is more advantageous and if there are any breakpoints. In my case it was purely decided on what would grant the most personal development, as I had not previously built a stateful application.
+
+<br>
+
+### Authentication Flow
+Setting up a functioning, safe and user-friendly identification process is not inherently a simple matter. There are a lot happening *behind the scenes*, so to speak, that the user is blissfully oblivious of. Globetrotter employs also provides two different authentication methods; users are able to authenticate locally or by using an external provider, in this case Google and Facebook.
+
+<br>
+<br>
+<br>
+
+<p align="center">
+  <img src="./diagrams/auth-flow.svg" width="80%">
+  <br>
+  <br>
+  <em>Visualization of the OAuth authentication flow</em>
+</p>
+
+<br>
+
+1) Client (web browser) makes a request to Globetrotter's REST API hitting an endpoint corresponding to the preferred authentication method and provider or credentials.
+2) REST API responds with a redirect URL.
+3) User arrives at the OAuth provider's authentication page.
+4) OAuth provider responds with authentication success status to REST API.
+5) REST API posts a new session creation request to the cache database.
+6) Cache database responds with a unique session id.
+7) Document database is searched for a matching user. If not found, a request is made to create a new user instance based on the details sent from the OAuth provider.
+8) The user instance is sent to the REST API.
+9) REST API sends the unique session id in a cookie to the client, which is used as an authentication key in subsequent requests to the REST API.
+
+Understanding this flow makes it much easier to connect the various parts that enables the entire process.
 
 <br>
 
@@ -305,11 +340,11 @@ Mobile-first is a relatively new yet universally adopted concept, born out of th
 <br>
 
 ### State Management
-Managing access to and manipulation of data is arguably the most difficult task when building the frontend of a web application. Attempting to solve this problem, or at least alleviate some of the involved complexity, there is an abundance of readily available libraries on any package manager. These libraries themselves comes in turn with various degrees of complexity, not uncommonly complicating state management even further, and might even entrap you in very specific workflows which might not have been accounted for. 
+Managing access to and manipulation of data is arguably the most difficult task when building the frontend of a web application. Attempting to solve this problem, or at least alleviate some of the complexity involved, there is an abundance of readily available libraries on any package manager. These libraries themselves comes in turn with various degrees of complexity, not uncommonly complicating state management even further, and might even entrap you in very specific workflows which might not have been accounted for. 
 
-React, being a library and not a framework, often leaves it up to the developer to decide on what toolkit should be used. Since *state* plays such a pivotal part of React, it provides us with several ways to handle it, effectively making means of managing state in any other way obsolete. Even so, a huge chunk of developers opt for solutions outside of the library, myself included. The reason being, as it often is, a matter of preference; modularity, boilerplate and readability have been my focal points picking out a state manager. After extensive research, I settled on [*jotai*](https://github.com/pmndrs/jotai), a highly flexible library with minimal boilerplate mimicking the *hooks* API. A seemingly perfect fit considering my search criterias.
+React, being a library and not a framework, often leaves it up to the developer to decide on what the toolkit should look like. Since *state* plays such a pivotal part, React provides us with several ways to handle it, effectively making means of managing state in any other way obsolete. Even so, a huge chunk of developers opt for solutions outside of the library, myself included. The reason being, as it often is, a matter of preference; modularity, boilerplate and readability have been my focal points picking out a state manager. After extensive research, I settled on [*jotai*](https://github.com/pmndrs/jotai), a highly flexible library with minimal boilerplate mimicking the *hooks* API. A seemingly perfect fit considering my search criterias.
 
-Though I had a way of easily reading and manipulating a global state, I took care not to abuse it; only using it when certain of its neccessity. Having experience of many different state managers prior to making Globetrotter's frontend, and drawing from intelligence gained through research, it felt very natural to decide what state should exist globally and which should be local. Contemplating how this thought process could be articulated, I felt it more both easier to understand and to explain by visualizing it.
+Though I had a way of easily reading and manipulating a global state, I took care not to abuse it; only using it when neccessity has been established. Having experience of many different state managers prior to making Globetrotter's frontend, and drawing from intelligence gained through research, it felt very natural to decide what state should exist globally and which should be local. Contemplating how this thought process could be articulated, I felt that it was easier to understand, and to explain, by visualizing it.
 
 <br>
 <br>
@@ -324,7 +359,7 @@ Though I had a way of easily reading and manipulating a global state, I took car
 
 <br>
 
-A quite basic yet proficient method for making snap rulings on where state should live. 
+A quite basic, yet proficient, method for making snap rulings on where state should live. Exceptions may arise, of course, so it should not be taken as gospel, just as a helpful.
 
 <br>
 
