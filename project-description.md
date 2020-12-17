@@ -5,7 +5,7 @@ Globetrotter
 [Hampus Olsen](https://github.com/hampusolsen)<br>
 [EC Utbildning](https://www.ecutbildning.se/)<br>
 Frontend Development, 2020<br>
-Final Examinations Project, 40 YHP
+Final Examination Project, 40 YHP
 
 <br>
 <br>
@@ -52,8 +52,9 @@ Table of Contents
     + [Containerization](#containerization)
   + [Documentation](#documentation)
   + [Database Management](#database-management)
-    + [Caching Data](#caching-data)
+    + [Data Caching](#data-caching)
     + [Distributed and Document-based](#distributed-and-document-based)
+    + [File Systems](#file-systems)
   + [Authentication and Authorization](#authentication-and-authorization)
     + [Honorable Mentions](#honorable-mentions)
     + [Stateful and Stateless Web Services](#stateful-and-stateless-web-services)
@@ -229,17 +230,24 @@ To accomodate the widest array of platforms and pursuit the highest percentage o
 <br>
 
 ### Database Management
-Content
+The database lies as a foundation for an entire application. Everything is created around the database; the frontend client visually presents and lets a user mutate data stored inside through a server that lies in between to delegate requests. An application typically rests on top of several databases that each handles a particular playing into the database types strength. Choosing which database to use requires knowledge about just these strengths and weaknesses and a clearly defined purpose.
 
 <br>
 
-#### Caching Data
-Content
+#### Data Caching
+A big part of the user experience revolves around an applications interaction latency; users naturally prefer an immediate response to their actions. With this in mind, developers have an arsenal of tools to reduce response times. Data caching, or plainly put just storing it in memory, being one of them. Temporarily storing data in memory instead of writing and reading to the hard drive results in a much faster method for retrieving data, but is also inherently limited by memory size being lesser a fraction of the storage a hard drive supplies. Meaning that only carefully selected data should live in the cache. For Globetrotter this means that a user's session-related details, because this is something that needs to be retrieved for every single request made to the REST API server. Data caching is an optimization tool and might now always be needed, so when used for production in a real project then the increased costs should be weighed against gains in user experience.
 
 <br>
 
 #### Distributed and Document-based
-Content
+Data stored long term is what drives any modern web application. Being able to personalize a user experience, easy addition of more content and allowing stored data to be searchable requires a database. Globetrotter implements MongoDB, a so called NoSQL-database, through the library *mongoosejs* which acts as a translator between MongoDB's query language and JavaScript, also known as *object document/relation mapper (ODM / ODM)* dependning on whether the database is document-based like MongoDB or relational like MySQL. 
+
+Motivating choosing a document-based database over relational one is hard since both are viable options in this case. What ultimately pushed me to chose one over the other was because I found *mongoosejs* easier to work with than libraries such as *Prisma*, *node-postgres* or *mysqljs*.
+
+<br>
+
+#### File Systems
+A commonly erroneous assumption made is that files are stored in some kind of database. Sure, sometimes smaller files such as thumbnails or text documents are stored in such a way but usually they are simply stored on a hard drive on some file system. What a database contains is practically just information such as location path, size, type, etcetera. Requests to download a file can then be made using the file details. For Globetrotter I have chosen a cloud-based file host specialised in images and video, [Cloudinary](https://cloudinary.com/), which offers free services for small-time users. This way I could keep my own machine free off of random images and also create a more realistic solution.
 
 <br>
 
@@ -387,8 +395,11 @@ Discussion
 ----------
 <br>
 
-+ Solo programming
-  + 
+Globetrotter was an amibitious project from the get-go; solo programming a complex fullstack web application using minimal tooling takes a lot of time and thought. As can be derived from glancing over [the Gantt-schedule](#gantt-schedule) created during the initial planning phase, and then comparing it to my commit history on Github, one can clearly see how the project started to drift further and further away from what was planned. Instead of curbing my expectations and limit the projects scope to something more manageable, the decision was made that I had to simply clock more hours. A decision that saw me almost burned out towards the end as there were a lot of other things demanding time outside of the examination project. Working full-time, often overtime, on an internship as well as writing a major report about the experience while simultaneously doing a project of Globetrotters scale, meant that the vast majority of my waking time was spent looking at a computer screen. Either working, doing research or coding. Leaving me with less than a desireable amount of time for sleep. In hindsight, this decision was not well-reasoned, or rather, influenced by stress and my own stubbornness was I not able to distance myself from the project and view it objectively. Had I just realized in the projects early stages that additional limitations were required and made changes accordingly, the entire process could safely be assumed to have been a much more pleasant and rewarding experience.
+
+Writing the applications frontend client in TypeScript is a decision I sternly questioned afterwards. The reasoning behind coding in TypeScript was that the superset of JavaScript is quickly becoming a staple in real-world code, and so, was something I wanted to become more comfortable with. This train of thought is not wrong in itself and makes for a sound motivation, had it not been for one thing. I had unconsciously and needlessly expanded upon the actual goal set for this project; my goal was to understand *how a web application functions*, not *how it is created*. TypeScript shines in a large project worked on by many developers, not quite the case for Globetrotter. So imposing this extracurricular set of rules, such as strict typing and having a minimalistic approach to adding libraries, great as they are, were only working against me as *a lot* of time was spent towards upholding them. 
+
+Picking the applications stateful authentication method over a stateless one was motivated by its added functionality. Functionality that was not utilized, therefore also an area where plenty of time could have been saved; implementing a stateful authentication flow is considered a bit more complex and was something I had no experience with, so it also consumed considerably more time than a stateless method would have. The same could be said about using a third-party library for state management instead of using what React natively provided. Though, in this case it is uncertain whether it actually added to the amount of time spent, because [*jotai*](#technical-specification) was fairly simple to work with and its boilerplate was next to non-existent.
 
 <br>
 
@@ -407,12 +418,11 @@ For better or worse, working alone gave me full autonomy. I could adopt whicheve
 
 The main points I will take with me are:
 
-+ Making code maintainable by exhaustive and declarative naming of variables and functions. Even if it is code yourself has written, it will not make sense after a month if it is not easy to read.
++ Making code maintainable by exhaustive and declarative naming of variables and functions. Even if it is code you have written yourself, it will not make sense after a month if it is not easy to read.
 
-+ Always overestimate the time it will take to complete a task. Even if a task at first seems simple and it might even involve simple logic, there will surely be unexpected bumps on the road. Just coming up with names as mentioned in the bulletpoint above takes time. Coming up with the most efficient way to do something takes time. Testing for edge cases and bugs takes time. Not overestimating the time it would take to finish various tasks was what gave me the absolute biggest headache. Underestimating not only impacted my sleep, since I had to work longer than previously thought, it also impacted my mentality. Due to several delays I started to doubt my own skill. After I just started multiplying my estimations by a factor of three, tasks became way more enjoyable.
++ Always overestimate the time it will take to complete a task. Even if a task at first seems simple and even involves simple logic, there will surely be unexpected bumps on the road. Just coming up with names as mentioned in the bulletpoint above takes time. Coming up with the most appropriate way to do something takes time. Testing for edge cases and bugs takes time. Not overestimating the time it would take to finish various tasks was what gave me the absolute biggest headache. Underestimating not only impacted my sleep, since I had to work longer than previously thought, it also impacted my mentality. Due to several delays I started to doubt my own skill. After I just started multiplying my estimations by a factor of three, tasks became way more enjoyable.
 
-+ Focusing on code reusability. On the frontend it boils down to building small components which can later be combined to create larger modules to be placed inside a view is a wonderfully rewarding way to work. It has a natural snowball effect where the more small components and modules you have, the faster and easier it becomes to create complex views. 
-
++ Focusing on code reusability. On the frontend it boils down to building small components which can later be combined to create larger modules to be placed inside a view is a wonderfully rewarding way to work. It has a natural snowball effect where the more small components and modules you have, the faster and easier it becomes to create complex views.
 
 <br>
 
