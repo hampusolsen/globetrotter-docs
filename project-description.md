@@ -1,9 +1,11 @@
 <!-- omit in toc -->
-Globetrotter Project Description
-================================
+Globetrotter
+============
 
-**Project name:** Globetrotter<br>
-**Project administrator:** [Hampus Olsen](https://github.com/hampusolsen)
+[Hampus Olsen](https://github.com/hampusolsen)
+[EC Utbildning](https://www.ecutbildning.se/)
+Frontend Development, 2020
+Final Examinations Project, 40 YHP
 
 <br>
 <br>
@@ -58,6 +60,7 @@ Table of Contents
   + [Responsive User Interface](#responsive-user-interface)
   + [State Management](#state-management)
 + [Discussion](#discussion)
++ [Conclusion](#conclusion)
 + [Technical Specification](#technical-specification)
   + [Frontend](#frontend)
   + [Backend](#backend)
@@ -146,9 +149,9 @@ The [*Model-View-Controller* pattern](https://www.codecademy.com/articles/mvc) i
 ### Version Control with Git
 Managing a codebase and tracking development proceedings manually would be an unthinkable feat if it were not for source-code management systems like Git or Subversion. Plenty of hosting platforms exists which allows you to work with Git, such as Bitbucket, GitLab and GitHub to name a few, and since GitHub is both free to use, easy to set up and I already had an account, it made my choice very easy.
 
-Working on a project by yourself and using Git felt at first awkward; since I was developing on my own there was no one else that depended on my commits, and as such there were never any real need to push code to GitHub. So to overcome this awkwardness I just had to follow through on a workflow, just as if the application were developed by a team. Researching different methods, I quickly decided on a [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). This means that development is done on branches secluded from the main trunk, to ultimately be merged after reviewing and testing. Another popular method that I first thought of using was rebasing to get a linear history of project commits; [convinced by Fredrik Morken](https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1) that this was purely done in vanity and opened up to possibilities of complicating tracking of bugs, striving for a linear history was discarded.
+Working on a project by yourself and using Git felt at first awkward; since I was developing on my own there was no one else that depended on my commits, and as such there were never any real need to push code to GitHub. So to overcome this awkwardness I just had to follow through on a workflow, just as if the application were developed by a team. Researching different methods, I quickly decided on a [feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). This means that development is done on branches secluded from the main trunk, to ultimately be merged after reviewing and testing. Another popular method that I first thought of using was rebasing to get a linear history of project commits; [convinced by Fredrik Morken](https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1) that this was purely done in vanity and even opened up to possibilities of complicating tracking of bugs, striving for a linear history felt silly and thus was discarded.
 
-With a workflow in place, and [using conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) that are easily readable by both humans and machines, it was just a matter of consistently conforming to it. Formatting commit messages like this could help greatly during continuous integration and deployment (CI/CD), enabling version documentation to be automatically generated.
+With a workflow in place, and [using conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) that are easily readable by both humans and machines, it was just a matter of consistently conforming to it. Formatting commit messages like this could help greatly during continuous integration and deployment (CI/CD), enabling versioning to be largely automatically documented.
 
 <br>
 
@@ -359,7 +362,7 @@ Though I had a way of easily reading and manipulating a global state, I took car
 
 <br>
 
-A quite basic, yet proficient, method for making snap rulings on where state should live. Exceptions may arise, of course, so it should not be taken as gospel, just as a helpful guide.
+A quite basic, yet proficient, method for making snap rulings on where state should live. Exceptions may arise, of course, so it should not be taken as gospel, merely a helpful guide.
 
 <br>
 
@@ -372,7 +375,32 @@ Discussion
 ----------
 <br>
 
-Blehe
++ Solo programming
+  + 
+
+<br>
+
+[*To the top*](#table-of-contents)
+
+<br>
+<br>
+
+Conclusion
+----------
+<br>
+
+Developing a fullstack project is hard. A fact I was aware of before going into my final examination project, yet still managed to underestimate. There are many different parts that needs to be able to communicate with eachother, tons of edge cases, error handling, a world of configuration... The list goes on and on. As is often true in programming, someone else has solved the problem before you and as such, there is most probably a tool that simplifies things out there. Free of charge, to boot. In the midst of problem solving it might be tempting to reach for one of these tools, an easy solution, but in my opinion this should be delicatelly considered. Every library installed bloats project size, opens up to more security vulnerabilities and furthers a projects dependency on the open-source community; mindlessly bringing in libraries to solve rudimentary tasks should be frowned upon as it simply lessens ones understanding of the code base. On the other hand, using supported and thoroughly tested libraries chosen with a clear intent after careful consideration, is fundamental to building work efficiency. A belief that started out as a challenge to myself, but now something I follow virtuously.
+
+For better or worse, working alone gave me full autonomy. I could adopt whichever principles I deemed fit or were interested in learning more about without having to convince anyone else of them. But working alone did not really mean that *I could*, it meant that *I had to*. Every decision that had to be made, be it concerning the database structure or the look of a button, had to be made by me. Starting out this was just fine and I did not neccessarily view it as a drawback. As time went on, though, I started to miss having someone to spitball solutions with or just getting another developers opinion. The feeling of isolation and being stranded had crept closer and closer and I could feel what is half-jokingly known as [*code fatigue*](https://www.urbandictionary.com/define.php?term=Code%20Fatigue). A state of mind where you can not think of anything else besides programming; a kind of auto-pilot was switched on in my brain making me forget both time and space. Since I also worked full time throughout the entire project and did another major report for school, I did not get much sleep as I really wanted to accomplish everything I set out to do for Globetrotter. Always repeating to myself that this was something chosen by me, an MVP of the site was produced before deadline, completing the practical part of goal. On the contrary, the theoretical part of my goal had been totally achieved. What was implemented and written about merely represents a fraction of insights gained researching for the project.
+
+The main points I will take with me are:
+
++ Making code maintainable by exhaustive and declarative naming of variables and functions. Even if it is code yourself has written, it will not make sense after a month if it is not easy to read.
+
++ Always overestimate the time it will take to complete a task. Even if a task at first seems simple and it might even involve simple logic, there will surely be unexpected bumps on the road. Just coming up with names as mentioned in the bulletpoint above takes time. Coming up with the most efficient way to do something takes time. Testing for edge cases and bugs takes time. Not overestimating the time it would take to finish various tasks was what gave me the absolute biggest headache. Underestimating not only impacted my sleep, since I had to work longer than previously thought, it also impacted my mentality. Due to several delays I started to doubt my own skill. After I just started multiplying my estimations by a factor of three, tasks became way more enjoyable.
+
++ Focusing on code reusability. On the frontend it boils down to building small components which can later be combined to create larger modules to be placed inside a view is a wonderfully rewarding way to work. It has a natural snowball effect where the more small components and modules you have, the faster and easier it becomes to create complex views. 
+
 
 <br>
 
