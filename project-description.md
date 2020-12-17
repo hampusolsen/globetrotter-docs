@@ -67,10 +67,8 @@ Table of Contents
   + [Backend](#backend)
   + [Testing and Style Enforcement](#testing-and-style-enforcement)
   + [Documentation, Diagrams and Graphics](#documentation-diagrams-and-graphics)
-+ [API & Database Specifications](#api--database-specifications)
-  + [E/R-diagram](#er-diagram)
-  + [Documentation](#documentation-1)
 + [Addendum](#addendum)
+  + [E/R-diagram](#er-diagram)
   + [Gantt Schedule](#gantt-schedule)
   + [Mockups and Styleguide](#mockups-and-styleguide)
 
@@ -79,7 +77,10 @@ Table of Contents
 <!--omit in toc  -->
 Figure Contents
 ---------------
-+ [Fig 1. The structural difference between using containers versus virtual machines](#fig-1.-the-structural-difference-between-using-containers-versus-virtual-machines)
+
++ [Fig 1. The structural difference between using containers versus virtual machines](#fig-1)
++ [Fig 2. Visualization of the OAuth authentication flow](#fig-2)
++ [Fig 3. Visualization of the state placement decision](#fig-3)
 
 <br>
 <br>
@@ -195,8 +196,8 @@ So, to keep ones development machine lean and stripped of non-vital code, we hav
 
 <br>
 
+<a id="fig-1"></a>
 <p align="center">
-  <a name="Fig 1. The structural difference between using containers versus virtual machines"></a>
   <img src="./resources/containerization-vs-vms.svg" width="70%">
   <br>
   <em>Fig 1. The structural difference between using containers versus virtual machines.</em>
@@ -311,11 +312,12 @@ Setting up a functioning, safe and user-friendly identification process is not i
 <br>
 <br>
 
+<a id="fig-2"></a>
 <p align="center">
   <img src="./diagrams/auth-flow.svg" width="80%">
   <br>
   <br>
-  <em>Visualization of the OAuth authentication flow</em>
+  <em>Fig 2. Visualization of the OAuth authentication flow</em>
 </p>
 
 <br>
@@ -362,11 +364,12 @@ Though I had a way of easily reading and manipulating a global state, I took car
 <br>
 <br>
 
+<a id="fig-3"></a>
 <p align="center">
   <img src="./diagrams/state-decision-flow.svg" width="60%">
   <br>
   <br>
-  <em>Visualization of the state placement decision</em>
+  <em>Fig 3. Visualization of the state placement decision</em>
 </p>
 
 <br>
@@ -461,8 +464,8 @@ Technical Specification
 <br>
 <br>
 
-API & Database Specifications
------------------------------
+Addendum
+--------
 <br>
 
 ### E/R-diagram
@@ -483,22 +486,6 @@ API & Database Specifications
 [*To the top*](#table-of-contents)
 
 <br>
-<br>
-
-### Documentation
-<br>
-
-Click [here](https://github.com/hampusolsen/globetrotter-server/blob/master/docs/api-specification.md) to go to the Globetrotter backend API documentation.
-
-<br>
-
-[*To the top*](#table-of-contents)
-
-<br>
-<br>
-
-Addendum
---------
 <br>
 
 ### Gantt Schedule
