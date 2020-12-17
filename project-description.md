@@ -2,9 +2,9 @@
 Globetrotter
 ============
 
-[Hampus Olsen](https://github.com/hampusolsen)
-[EC Utbildning](https://www.ecutbildning.se/)
-Frontend Development, 2020
+[Hampus Olsen](https://github.com/hampusolsen)<br>
+[EC Utbildning](https://www.ecutbildning.se/)<br>
+Frontend Development, 2020<br>
 Final Examinations Project, 40 YHP
 
 <br>
