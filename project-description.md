@@ -36,6 +36,7 @@ Globetrotter aims to be a fully functional user-driven travel diary. A web appli
 Table of Contents
 -----------------
 
++ [Figure Contents](#figure-contents)
 + [Purpose and Goal](#purpose-and-goal)
 + [Scope](#scope)
   + [Limitations](#limitations)
@@ -72,6 +73,13 @@ Table of Contents
 + [Addendum](#addendum)
   + [Gantt Schedule](#gantt-schedule)
   + [Mockups and Styleguide](#mockups-and-styleguide)
+
+<br>
+
+<!--omit in toc  -->
+Figure Contents
+---------------
++ [Fig 1. The structural difference between using containers versus virtual machines](#fig-1.-the-structural-difference-between-using-containers-versus-virtual-machines)
 
 <br>
 <br>
@@ -188,9 +196,10 @@ So, to keep ones development machine lean and stripped of non-vital code, we hav
 <br>
 
 <p align="center">
+  <a name="Fig 1. The structural difference between using containers versus virtual machines"></a>
   <img src="./resources/containerization-vs-vms.svg" width="70%">
   <br>
-  <em>The structural difference between using containers versus virtual machines.</em>
+  <em>Fig 1. The structural difference between using containers versus virtual machines.</em>
 </p>
 
 <br>
