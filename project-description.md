@@ -27,7 +27,7 @@ Abstract
 
 <br>
 
-Globetrotter aims to be a fully functional user-driven travel diary. A web application enabling friends and family to share travel experiences. The application will mainly be divided into two views: one full screen map view for easy travel representation and one blog view for further reading.
+This reports intention is to describe how, what and why for Globetrotters development process. Globetrotter aims to be a fully functional user-driven travel diary. A web application enabling friends and family to share travel experiences. The application will mainly be divided into two views: one full screen map view for easy travel representation and one blog view for further reading. The key outtakes that I have drawn from working on the project are the importance of an initially clear structure and a realistically limited scope as well as keeping within its parameters. Furthermore, being individually responsible for a fullstack project of Globetrotter's scale is very rewarding but also extremely challenging. Thus, what I can conclude from working on this final examination project is the importance of overestimating a task's duration and writing reusable and modular code.
 
 <br>
 <br>
@@ -36,7 +36,6 @@ Globetrotter aims to be a fully functional user-driven travel diary. A web appli
 Table of Contents
 -----------------
 
-+ [Figure Contents](#figure-contents)
 + [Purpose and Goal](#purpose-and-goal)
 + [Scope](#scope)
   + [Limitations](#limitations)
@@ -68,6 +67,7 @@ Table of Contents
   + [Backend](#backend)
   + [Testing and Style Enforcement](#testing-and-style-enforcement)
   + [Documentation, Diagrams and Graphics](#documentation-diagrams-and-graphics)
++ [References](#references)
 + [Addendum](#addendum)
   + [E/R-diagram](#er-diagram)
   + [Gantt Schedule](#gantt-schedule)
@@ -75,7 +75,7 @@ Table of Contents
 
 <br>
 
-<!--omit in toc  -->
+<!-- omit in toc -->
 Figure Contents
 ---------------
 
@@ -240,14 +240,14 @@ A big part of the user experience revolves around an applications interaction la
 <br>
 
 #### Distributed and Document-based
-Data stored long term is what drives any modern web application. Being able to personalize a user experience, easy addition of more content and allowing stored data to be searchable requires a database. Globetrotter implements MongoDB, a so called NoSQL-database, through the library *mongoosejs* which acts as a translator between MongoDB's query language and JavaScript, also known as *object document/relation mapper (ODM / ODM)* dependning on whether the database is document-based like MongoDB or relational like MySQL. 
+Data stored long term is what drives any modern web application. Being able to personalize a user experience, easy addition of more content and allowing stored data to be searchable requires a database. Globetrotter implements MongoDB, a so called NoSQL-database, through the library *mongoosejs* which acts as a translator between MongoDB's query language and JavaScript, also known as *object document/relation mapper (ODM / ODM)* depending on whether the database is document-based like MongoDB or relational like MySQL. 
 
 Motivating choosing a document-based database over relational one is hard since both are viable options in this case. What ultimately pushed me to chose one over the other was because I found *mongoosejs* easier to work with than libraries such as *Prisma*, *node-postgres* or *mysqljs*.
 
 <br>
 
 #### File Systems
-A commonly erroneous assumption made is that files are stored in some kind of database. Sure, sometimes smaller files such as thumbnails or text documents are stored in such a way but usually they are simply stored on a hard drive on some file system. What a database contains is practically just information such as location path, size, type, etcetera. Requests to download a file can then be made using the file details. For Globetrotter I have chosen a cloud-based file host specialised in images and video, [Cloudinary](https://cloudinary.com/), which offers free services for small-time users. This way I could keep my own machine free off of random images and also create a more realistic solution.
+A commonly erroneous assumption made is that files are stored in some kind of database. While it is true that sometimes smaller files such as thumbnails or text documents are stored in such a way, they are usually stored on a hard drive on some file system. What a database contains is practically just information such as location path, size, type, etcetera. Requests to download a file can then be made using the file details. For Globetrotter I have chosen a cloud-based file host specialised in images and video, [Cloudinary](https://cloudinary.com/), which offers free services for small-time users. This way I could keep my own machine free off of random images and also create a more realistic solution.
 
 <br>
 
@@ -267,9 +267,9 @@ Before even beginning to write about authentication and authorization, we must f
 
 <br>
 
-    “Encryption works ... Unfortunately, endpoint security is so terrifically weak ...”
+    “Encryption works. ... Unfortunately, endpoint security is so terrifically weak...”
 
-*[Edward Snowden](https://twitter.com/snowden)*
+*[Edward Snowden](https://www.theguardian.com/world/2013/jun/17/edward-snowden-nsa-files-whistleblower#block-51bf3588e4b082a2ed2f5fc5)*
 
 <br>
 
@@ -401,6 +401,8 @@ Writing the applications frontend client in TypeScript is a decision I sternly q
 
 Picking a stateful authentication method for the application over a stateless one was motivated by its added functionality. Functionality, in the end, that was not utilized, therefore also an area where plenty of time could have been saved; implementing a stateful authentication flow is a bit more complex and was something I had no experience with, so it also consumed considerably more time than a stateless method would have. The same could be said about using a third-party library for state management instead of using what React natively provided. Though, in this case it is uncertain whether it actually added to the amount of time spent, because [*jotai*](#technical-specification) was fairly simple to work with and its boilerplate was next to non-existent.
 
+Developing a fullstack project is hard. A fact I was aware of before going into my final examination project, yet still managed to underestimate. There are many different parts that needs to be able to communicate with eachother, tons of edge cases, error handling, a world of configuration... The list goes on and on. As is often true in programming, someone else has solved the problem before you and as such, there is most probably a tool that simplifies things out there. Free of charge, to boot. In the midst of problem solving it might be tempting to reach for one of these tools, an easy solution, but in my opinion this should be delicatelly considered. Every library installed bloats project size, opens up to more security vulnerabilities and furthers a projects dependency on the open-source community; mindlessly bringing in libraries to solve rudimentary tasks should be frowned upon as it simply lessens ones understanding of the code base. On the other hand, using supported and thoroughly tested libraries chosen with a clear intent after careful consideration, is fundamental to building work efficiency. A belief that started out as a challenge to myself, but now something I follow virtuously.
+
 <br>
 
 [*To the top*](#table-of-contents)
@@ -412,11 +414,11 @@ Conclusion
 ----------
 <br>
 
-Developing a fullstack project is hard. A fact I was aware of before going into my final examination project, yet still managed to underestimate. There are many different parts that needs to be able to communicate with eachother, tons of edge cases, error handling, a world of configuration... The list goes on and on. As is often true in programming, someone else has solved the problem before you and as such, there is most probably a tool that simplifies things out there. Free of charge, to boot. In the midst of problem solving it might be tempting to reach for one of these tools, an easy solution, but in my opinion this should be delicatelly considered. Every library installed bloats project size, opens up to more security vulnerabilities and furthers a projects dependency on the open-source community; mindlessly bringing in libraries to solve rudimentary tasks should be frowned upon as it simply lessens ones understanding of the code base. On the other hand, using supported and thoroughly tested libraries chosen with a clear intent after careful consideration, is fundamental to building work efficiency. A belief that started out as a challenge to myself, but now something I follow virtuously.
+In my final examination project I have aimed at implementing the fullstack project Globetrotter. During the ten weeks developing Globetrotter, I have gained a great deal of knowledge regarding various methods pertaining to user authentication and authorization, which has been noted in detail in the report. Furthermore, I have understood the complexity of working on a major fullstack project. Nonetheless, I have challeged myself by being individually responsible for the project which has given me a huge sense of accomplishment when realizing what I have been capable of producing, as well as frustration over dealing with the projects intricate nature alone. 
 
-For better or worse, working alone gave me full autonomy. I could adopt whichever principles I deemed fit or were interested in learning more about without having to convince anyone else of them. But working alone did not really mean that *I could*, it meant that *I had to*. Every decision that had to be made, be it concerning the database structure or the look of a button, had to be made by me. Starting out this was just fine and I did not neccessarily view it as a drawback. As time went on, though, I started to miss having someone to spitball solutions with or just getting another developers opinion. The feeling of isolation and being stranded had crept closer and closer and I could feel what is half-jokingly known as [*code fatigue*](https://www.urbandictionary.com/define.php?term=Code%20Fatigue). A state of mind where you can not think of anything else besides programming; a kind of auto-pilot was switched on in my brain making me forget both time and space. Since I also worked full time throughout the entire project and did another major report for school, I did not get much sleep as I really wanted to accomplish everything I set out to do for Globetrotter. Always repeating to myself that this was something chosen by me, an MVP of the site was produced before deadline, completing the practical part of goal. On the contrary, the theoretical part of my goal had been totally achieved. What was implemented and written about merely represents a fraction of insights gained researching for the project.
+For better or worse, working alone gave me full autonomy. I could adopt whichever principles I deemed fit or were interested in learning more about without having to convince anyone else of them. But working alone did not really mean that *I could*, it meant that *I had to*. Every decision that had to be made, be it concerning the database structure or the look of a button, had to be made by me. Starting out this was just fine and I did not neccessarily view it as a drawback. As time went on, though, I started to miss having someone to spitball solutions with or just getting another developers opinion. The feeling of isolation and being stranded had crept closer and closer and I could feel what is half-jokingly known as [*code fatigue*](https://www.urbandictionary.com/define.php?term=Code%20Fatigue). A state of mind where you can not think of anything else besides programming; a kind of auto-pilot was switched on in my brain making me forget both time and space. Since I also worked full time throughout the entire project and did another major report for school, I did not get much sleep as I really wanted to accomplish everything I set out to do for Globetrotter. Always repeating to myself that this was something chosen by me, an minimum viable product of the site was produced before deadline, completing the practical part of goal. On the contrary, the theoretical part of my goal had been totally achieved. What was implemented and written about merely represents a fraction of insights gained researching for the project.
 
-The main points I will take with me are:
+In conclusion, my final examination project has given me three key points that I will bring with me into my future career:
 
 + Making code maintainable by exhaustive and declarative naming of variables and functions. Even if it is code you have written yourself, it will not make sense after a month if it is not easy to read.
 
@@ -466,6 +468,77 @@ Technical Specification
 + [Illustrator](https://adobe.com/products/photoshop.html): *The state of the art of illustration*
 + [iconmonstr](http://iconmonstr.com): *A wide variety of free SVG icons.*
 + [Adobe Color](https://color.adobe.com/): *Color palette, the color scheme for artists*
+
+<br>
+
+[*To the top*](#table-of-contents)
+
+<br>
+<br>
+
+References
+----------
+<br>
+
+Codecademy. *MVC: Model, View, Controller.* Fetched: 2020, 10 October.<br>
+https://www.codecademy.com/articles/mvc
+
+Atlassian. *Git Feature Branch Workflow.* Fetched: 2020, 10 October.<br>
+https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
+
+M&oslash;rken, F. (2017, September 15). *Why you should stop using Git rebase.* Fetched: 2020, 14 October.<br>
+https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1
+
+Conventional Commits. *A specification for adding human and machine readable meaning to commit messages.* Fetched: 2020, 13 October.<br>
+https://www.conventionalcommits.org/en/v1.0.0/#summary
+
+Github. *Set up a modern web app by running one command.* Fetched: 2020, October 15.<br>
+https://github.com/facebook/create-react-app
+
+Github. *JavaScript Style Guide.* Fetched: 2020, October 15.<br>
+https://github.com/airbnb/javascript
+
+IBM. (2020, 2 September). *Containers vs. VMs: What’s the Difference?* Fetched: 2020, 28 October.<br>
+https://www.ibm.com/cloud/blog/containers-vs-vms
+
+Markdown. (2020, 15 December). In *Wikipedia*. Fetched: 2020, 16 December.<br>
+https://en.wikipedia.org/wiki/Markdown
+
+reStructuredText. (2020, 30 August). In *Wikipedia*. Fetched: 2020, 16 December.<br>
+https://en.wikipedia.org/wiki/ReStructuredText
+
+CommonMark Spec. (2019, 6 April). *CommonMark Spec.* Fetched: 2020, 6 November.<br> 
+https://spec.commonmark.org/0.29/
+
+Volynkin, N. (2018, 25 April). *Comments in Markdown.* [Answer to question on forum]. StackOverflow. Fetched: 2020, 6 November.<br>
+https://stackoverflow.com/questions/4823468/comments-in-markdown/32190021#32190021
+
+Snowden, E. (2013, 17 June). *Is encrypting my email any good at defeating the NSA surveilence? Is my data protected by standard encryption?* [Answer to question on forum]. The Guardian. Fetched: 2020, 12 November.<br>
+https://www.theguardian.com/world/2013/jun/17/edward-snowden-nsa-files-whistleblower#block-51bf3588e4b082a2ed2f5fc5
+
+Auth0. *Role-Based Access Control.* Fetched: 2020, 2 November.<br>
+https://auth0.com/docs/authorization/rbac
+
+Turdiev, J. (2019, 2 February). *Permission-based Authorization in ASP.NET Core.* Fetched: 2020, 2 November.<br>
+https://www.zehntec.com/blog/permission-based-authorization-in-asp-net-core/
+
+Brock University. *Multi-Factor Authentication - Information Technology Services.* Fetched: 2020, 2 November.<br>
+https://brocku.ca/information-technology/service-catalogue/security-and-access/multi-factor-authentication/
+
+Auth0. *Token Based Authentication Made Easy*. Fetched: 2020, 2 November.<br>
+https://auth0.com/learn/token-based-authentication-made-easy/
+
+Stateful vs Stateless Authenticaion. (2020, 4 March). In *OpenAM wiki*. Fetched: 2020, 2 November.<br>
+https://github.com/OpenIdentityPlatform/OpenAM/wiki/Stateful-vs-Stateless-Authentication
+
+StatCounter. *Screen Resolution Stats Worldwide - November 2020.* Fetched: 2020, 16 November.<br>
+https://gs.statcounter.com/screen-resolution-stats/
+
+GSMA. *Mobile Internet Connectivity 2019 - Global Factsheet.* Fetched: 2020, 16 November.<br>
+https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2019/07/Mobile-Internet-Connectivity-Global-Factsheet.pdf
+
+Clement, J. (2020, 29 October). *Facebook users reach by device, 2020.* Fetched: 2020, 16 November.<br>
+https://www.statista.com/statistics/377808/distribution-of-facebook-users-by-device/
 
 <br>
 
@@ -540,6 +613,9 @@ Addendum
 </p>
 
 <br>
-<br>
 
 [*To the top*](#table-of-contents)
+
+<br>
+<br>
+
